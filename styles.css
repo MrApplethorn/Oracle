@@ -7,10 +7,31 @@ body {
       }
 button {
       font-family: 'Germania One', sans-serif;
-      padding: 12px 20px;
-      font-size: 16px;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      background: #2a2a3d;
+      color: #f5e6b3;
+      border: 2px solid #c9a44c;
+      border-radius: 6px;
+      box-shadow: 
+            0 0 8px rgba(201, 164, 76, 0.4),
+            inset 0 0 6px rgba(0,0,0,0.6);
       cursor: pointer;
-      margin-top: 20px;
+}
+button:hover {
+      transform: scale(1.05);
+      box-shadow: 
+            0 0 14px rgba(201, 164, 76, 0.7),
+            inset 0 0 8px rgba(0,0,0,0.8);
+}
+
+button:active {
+      transform: scale(0.97);
+      box-shadow: 
+            0 0 6px rgba(201, 164, 76, 0.5),
+            inset 0 0 10px rgba(0,0,0,0.9);
 }
 #result {
       margin-top: 30px;
