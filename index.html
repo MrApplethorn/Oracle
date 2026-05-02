@@ -256,95 +256,74 @@
     }
     
     function drawOneCardAnimated(i) {
-  return new Promise((resolve) => {
-    const cardData = drawRandomCard();
-    const title = drawTitles[i];
-    const keys = titleRules[title] || ["name"];
-
-    const value = keys
-      .map(k => cardData[k])
-      .filter(Boolean)
-      .join("\n");
-
-    const wrapper = document.createElement("div");
-    wrapper.style.display = "flex";
-    wrapper.style.flexDirection = "column";
-    wrapper.style.alignItems = "center";
-
-    const titleEl = document.createElement("div");
-    titleEl.innerText = title;
-    titleEl.style.marginBottom = "8px";
-    titleEl.style.fontSize = "14px";
-    titleEl.style.opacity = "0.8";
-
-    const cardEl = document.createElement("div");
-    cardEl.classList.add("flip-card");
+      return new Promise((resolve) => {
+        const cardData = drawRandomCard();
+        const title = drawTitles[i];
+        const keys = titleRules[title] || ["name"];
     
-    const inner = document.createElement("div");
-    inner.classList.add("flip-inner");
+        const value = keys
+          .map(k => cardData[k])
+          .filter(Boolean)
+          .join("\n");
     
-    const front = document.createElement("div");
-    front.classList.add("card-front");
+        const parts = value.split("\n");
+        const name = parts[0] || "";
+        const description = parts.slice(1).join("\n");
     
-    const img = document.createElement("img");
-    img.src = cardData.image || "images/back.webp";
+        const wrapper = document.createElement("div");
+        wrapper.style.display = "flex";
+        wrapper.style.flexDirection = "column";
+        wrapper.style.alignItems = "center";
     
-    front.appendChild(img);
+        const titleEl = document.createElement("div");
+        titleEl.innerText = title;
+        titleEl.style.marginBottom = "8px";
+        titleEl.style.fontSize = "14px";
+        titleEl.style.opacity = "0.8";
     
-    const back = document.createElement("div");
-    back.classList.add("card-back");
+        const cardEl = document.createElement("div");
+        cardEl.classList.add("flip-card");
     
-    back.innerHTML = `
-      <div style="font-size:16px; font-weight:bold; margin-bottom:8px;">
-        ${name}
-      </div>
-      <div style="font-size:12px;">
-        ${description}
-      </div>
-    `;
+        const inner = document.createElement("div");
+        inner.classList.add("flip-inner");
     
-    inner.appendChild(front);
-    inner.appendChild(back);
-    cardEl.appendChild(inner);
+        const front = document.createElement("div");
+        front.classList.add("card-front");
     
-    cardEl.addEventListener("click", () => {
-      cardEl.classList.toggle("flipped");
-    });
-
-    const parts = value.split("\n");
-    const name = parts[0] || "";
-    const description = parts.slice(1).join("\n");
-
-    back.innerHTML = `
-      <div style="font-size:16px; font-weight:bold; margin-bottom:8px;">
-        ${name}
-      </div>
-      <div style="font-size:12px;">
-        ${description}
-      </div>
-    `;
-
-    cardEl.appendChild(img);
-    cardEl.appendChild(back);
-
-    cardEl.addEventListener("click", () => {
-      cardEl.classList.toggle("flipped");
-    });
-
-    wrapper.appendChild(titleEl);
-    wrapper.appendChild(cardEl);
-    resultContainer.appendChild(wrapper);
-
-    // allow animation to trigger
-    setTimeout(() => {
-      cardEl.classList.add("show");
-    }, 50);
-
-    setTimeout(() => {
-      resolve();
-    }, 400);
-  });
-}
+        const img = document.createElement("img");
+        img.src = cardData.image || "images/back.webp";
+    
+        front.appendChild(img);
+    
+        const back = document.createElement("div");
+        back.classList.add("card-back");
+    
+        back.innerHTML = `
+          <div style="font-size:16px; font-weight:bold; margin-bottom:8px;">
+            ${name}
+          </div>
+          <div style="font-size:12px;">
+            ${description}
+          </div>
+        `;
+    
+        inner.appendChild(front);
+        inner.appendChild(back);
+        cardEl.appendChild(inner);
+    
+        cardEl.addEventListener("click", () => {
+          cardEl.classList.toggle("flipped");
+        });
+    
+        wrapper.appendChild(titleEl);
+        wrapper.appendChild(cardEl);
+        resultContainer.appendChild(wrapper);
+    
+        setTimeout(() => {
+          resolve();
+        }, 400);
+      });
+    }
   </script>
 </body>
 </html>
