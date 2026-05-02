@@ -53,6 +53,7 @@
       font-size: 14px;
       transform: scale(0) rotateY(90deg);
       transition: transform 0.4s ease;
+      white-space: pre-line;
     }
 
     .card.show {
@@ -68,6 +69,18 @@
   <div id="resultContainer"></div>
 
   <script>
+    const drawTitles = [
+      "Party Gathers",
+      "Adventure Begins",
+      "Journey",
+      "Entrance",
+      "First Challenge",
+      "Second Challenge",
+      "Third Challenge",
+      "Guardian",
+      "Treasure"
+    ];
+    
     const cards = [
       { name: "Aberration", effect: "" },
       { name: "Balance", effect: ""},
@@ -168,9 +181,18 @@ function drawOneCardAnimated() {
 
     const cardEl = document.createElement("div");
     cardEl.classList.add("card");
-    cardEl.innerText = cardData.effect
-      ? `${cardData.name}\n${cardData.effect}`
-      : cardData.name;
+    const index = resultContainer.children.length;
+
+const title = drawTitles[index] || "";
+
+cardEl.innerHTML = `
+  <div style="font-size:12px; opacity:0.8; margin-bottom:6px;">
+    ${title}
+  </div>
+  <div style="font-weight:bold;">
+    ${cardData.name}
+  </div>
+`;
 
     resultContainer.appendChild(cardEl);
 
