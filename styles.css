@@ -4,15 +4,15 @@ body {
       padding: 50px;
       background: #1e1e2f;
       color: white;
-    }
-    button {
+      }
+button {
       font-family: 'Germania One', sans-serif;
       padding: 12px 20px;
       font-size: 16px;
       cursor: pointer;
       margin-top: 20px;
-    }
-    #result {
+}
+#result {
       margin-top: 30px;
       font-size: 20px;
       background: #333;
@@ -21,18 +21,18 @@ body {
       display: inline-block;
       max-width: 500px;
       transition: transform 0.2s;
-    }
-    #result:hover {
+}
+#result:hover {
       transform: scale(1.05);
-    }
-    #resultContainer {
+}
+#resultContainer {
       margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
-    }
-    .card {
+}
+.card {
       width: 180px;
       min-height: 200px;
       background: #444;
@@ -48,31 +48,34 @@ body {
       transition: transform 0.4s ease;
       white-space: pre-line;
       overflow-y: auto;
-    }
-    .card.show {
+}
+.card.show {
       transform: scale(1) rotateY(0deg);
-    }
-    #resultContainer > div {
-      margin-bottom: 15px;
-    }
-    .flip-card {
+}
+#resultContainer > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+}
+.flip-card {
       width: 260px;
       height: 450px;
       perspective: 1000px;
       cursor: pointer;
-    }
-    .flip-inner {
+}
+.flip-inner {
       width: 100%;
       height: 100%;
       position: relative;
       transform-style: preserve-3d;
       transition: transform 0.6s;
-    }
-    .flip-card.flipped .flip-inner {
+}
+.flip-card.flipped .flip-inner {
       transform: rotateY(180deg);
-    }
-    .card-front,
-    .card-back {
+}
+.card-front,
+.card-back {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -80,13 +83,13 @@ body {
       border-radius: 10px;
       top: 0;
       left: 0;
-    }
-    .card-front img {
+}
+.card-front img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-    .card-back {
+}
+.card-back {
       background: #444;
       color: white;
       transform: rotateY(180deg);
@@ -97,21 +100,49 @@ body {
       justify-content: center;
       align-items: center;
       text-align: center;
-    }
-    .flip-card:hover {
+}
+.flip-card:hover {
       transform: scale(1.03);
-    }
-    .card-title {
+}
+.card-title {
       font-size: 18px;
       margin-bottom: 12px;
-    }
-    .card-text {
+}
+.card-text {
       font-size: 14px;
       line-height: 1.5;
-    }
-    .card-label {
+}
+.card-label {
       font-size: 22px;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 12px;
-    }
+      border: 2px solid #c9a44c;
+      border-radius: 6px;
+      background: linear-gradient(145deg, #2a2a3d, #1a1a2a);
+      color: #f5e6b3;
+      box-shadow: 
+      0 0 8px rgba(201, 164, 76, 0.4),
+      inset 0 0 6px rgba(0,0,0,0.6);
+      display: inline-block;
+      position: relative;
+      background: #2a2a3d;
+      padding: 6px 14px;
+      text-transform: uppercase;
+}
+.card-label::before,
+.card-label::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      background: #c9a44c;
+      transform: translateY(-50%) rotate(45deg);
+} 
+.card-label::before {
+      left: -6px;
+}   
+.card-label::after {
+      right: -6px;
+}
