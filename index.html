@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Card Randomizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #1e1e2f;
+      color: white;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      background: #333;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      max-width: 500px;
+      transition: transform 0.2s;
+    }
+    #result:hover {
+      transform: scale(1.05);
+    }
+    #resultContainer {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .card {
+      width: 100px;
+      height: 140px;
+      background: #444;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      transform: scale(0) rotateY(90deg);
+      transition: transform 0.4s ease;
+    }
+
+    .card.show {
+      transform: scale(1) rotateY(0deg);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>D&D Card Randomizer</h1>
+  <button id="drawBtn">Draw Card</button>
+
+  <div id="resultContainer"></div>
+
+  <script>
+    const cards = [
+      { name: "Aberration", effect: "" },
+      { name: "Balance", effect: ""},
+      { name: "Beast", effect: ""},
+      { name: "Book", effect: ""},
+      { name: "Bridge", effect: ""},
+      { name: "Campfire", effect: ""},
+      { name: "Cavern", effect: ""},
+      { name: "Celestial", effect: ""},
+      { name: "Comet", effect: ""},
+      { name: "Construct", effect: ""},
+      { name: "Corpse", effect: ""},
+      { name: "Crossroads", effect: ""},
+      { name: "Donjon", effect: ""},
+      { name: "Door", effect: ""},
+      { name: "Dragon", effect: ""},
+      { name: "Elemental", effect: ""},
+      { name: "Euryale", effect: ""},
+      { name: "Expert", effect: ""},
+      { name: "Fates", effect: ""},
+      { name: "Fey", effect: ""},
+      { name: "Fiend", effect: "" },
+      { name: "Flames", effect: ""},
+      { name: "Fool", effect: ""},
+      { name: "Gem", effect: ""},
+      { name: "Giant", effect: ""},
+      { name: "Humanoid", effect: ""},
+      { name: "Jester", effect: ""},
+      { name: "Key", effect: ""},
+      { name: "Knight", effect: ""},
+      { name: "Lance", effect: ""},
+      { name: "Mage", effect: ""},
+      { name: "Map", effect: ""},
+      { name: "Maze", effect: ""},
+      { name: "Mine", effect: ""},
+      { name: "Monstrosity", effect: ""},
+      { name: "Moon", effect: ""},
+      { name: "Ooze", effect: ""},
+      { name: "Path", effect: ""},
+      { name: "Pit", effect: ""},
+      { name: "Plant", effect: ""},
+      { name: "Priest", effect: "" },
+      { name: "Prisoner", effect: ""},
+      { name: "Puzzle", effect: ""},
+      { name: "Ring", effect: ""},
+      { name: "Rogue", effect: ""},
+      { name: "Ruin", effect: ""},
+      { name: "Sage", effect: ""},
+      { name: "Shield", effect: ""},
+      { name: "Ship", effect: ""},
+      { name: "Skull", effect: ""},
+      { name: "Staff", effect: ""},
+      { name: "Stairway", effect: ""},
+      { name: "Star", effect: ""},
+      { name: "Statue", effect: ""},
+      { name: "Sun", effect: ""},
+      { name: "Talons", effect: ""},
+      { name: "Tavern", effect: ""},
+      { name: "Temple", effect: ""},
+      { name: "Throne", effect: ""},
+      { name: "Tomb", effect: ""},
+      { name: "Tower", effect: ""},
+      { name: "Tree", effect: ""},
+      { name: "Undead", effect: ""},
+      { name: "Void", effect: ""},
+      { name: "Warrior", effect: ""},
+      { name: "Well", effect: ""},
+    ];
+
+    let remainingCards = [...cards];
+
+    const resultContainer = document.getElementById("resultContainer");
+const button = document.getElementById("drawBtn");
+
+button.addEventListener("click", drawNineCards);
+
+async function drawNineCards() {
+  resultContainer.innerHTML = "";
+
+  if (remainingCards.length < 9) {
+    remainingCards = [...cards];
+    alert("Not enough cards left. Reshuffling deck...");
+  }
+
+  for (let i = 0; i < 9; i++) {
+    await drawOneCardAnimated();
+  }
+}
+
+function drawRandomCard() {
+  const index = Math.floor(Math.random() * remainingCards.length);
+  return remainingCards.splice(index, 1)[0];
+}
+
+function drawOneCardAnimated() {
+  return new Promise((resolve) => {
+    const cardData = drawRandomCard();
+
+    const cardEl = document.createElement("div");
+    cardEl.classList.add("card");
+    cardEl.innerText = cardData.effect
+      ? `${cardData.name}\n${cardData.effect}`
+      : cardData.name;
+
+    resultContainer.appendChild(cardEl);
+
+    // trigger animation
+    setTimeout(() => {
+      cardEl.classList.add("show");
+    }, 50);
+
+    // wait before next card
+    setTimeout(resolve, 400);
+  });
+}
+  </script>
+
+</body>
+</html>
