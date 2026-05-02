@@ -29,9 +29,11 @@
       max-width: 500px;
       transition: transform 0.2s;
     }
+    
     #result:hover {
       transform: scale(1.05);
     }
+    
     #resultContainer {
       margin-top: 30px;
       display: flex;
@@ -59,6 +61,10 @@
     .card.show {
       transform: scale(1) rotateY(0deg);
     }
+    
+    #resultContainer > div {
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
@@ -69,140 +75,127 @@
   <div id="resultContainer"></div>
 
   <script>
-    const drawTitles = [
-      "Party Gathers",
-      "Adventure Begins",
-      "Journey",
-      "Entrance",
-      "First Challenge",
-      "Second Challenge",
-      "Third Challenge",
-      "Guardian",
-      "Treasure"
-    ];
-    
-    const cards = [
-      { name: "Aberration", effect: "" },
-      { name: "Balance", effect: ""},
-      { name: "Beast", effect: ""},
-      { name: "Book", effect: ""},
-      { name: "Bridge", effect: ""},
-      { name: "Campfire", effect: ""},
-      { name: "Cavern", effect: ""},
-      { name: "Celestial", effect: ""},
-      { name: "Comet", effect: ""},
-      { name: "Construct", effect: ""},
-      { name: "Corpse", effect: ""},
-      { name: "Crossroads", effect: ""},
-      { name: "Donjon", effect: ""},
-      { name: "Door", effect: ""},
-      { name: "Dragon", effect: ""},
-      { name: "Elemental", effect: ""},
-      { name: "Euryale", effect: ""},
-      { name: "Expert", effect: ""},
-      { name: "Fates", effect: ""},
-      { name: "Fey", effect: ""},
-      { name: "Fiend", effect: "" },
-      { name: "Flames", effect: ""},
-      { name: "Fool", effect: ""},
-      { name: "Gem", effect: ""},
-      { name: "Giant", effect: ""},
-      { name: "Humanoid", effect: ""},
-      { name: "Jester", effect: ""},
-      { name: "Key", effect: ""},
-      { name: "Knight", effect: ""},
-      { name: "Lance", effect: ""},
-      { name: "Mage", effect: ""},
-      { name: "Map", effect: ""},
-      { name: "Maze", effect: ""},
-      { name: "Mine", effect: ""},
-      { name: "Monstrosity", effect: ""},
-      { name: "Moon", effect: ""},
-      { name: "Ooze", effect: ""},
-      { name: "Path", effect: ""},
-      { name: "Pit", effect: ""},
-      { name: "Plant", effect: ""},
-      { name: "Priest", effect: "" },
-      { name: "Prisoner", effect: ""},
-      { name: "Puzzle", effect: ""},
-      { name: "Ring", effect: ""},
-      { name: "Rogue", effect: ""},
-      { name: "Ruin", effect: ""},
-      { name: "Sage", effect: ""},
-      { name: "Shield", effect: ""},
-      { name: "Ship", effect: ""},
-      { name: "Skull", effect: ""},
-      { name: "Staff", effect: ""},
-      { name: "Stairway", effect: ""},
-      { name: "Star", effect: ""},
-      { name: "Statue", effect: ""},
-      { name: "Sun", effect: ""},
-      { name: "Talons", effect: ""},
-      { name: "Tavern", effect: ""},
-      { name: "Temple", effect: ""},
-      { name: "Throne", effect: ""},
-      { name: "Tomb", effect: ""},
-      { name: "Tower", effect: ""},
-      { name: "Tree", effect: ""},
-      { name: "Undead", effect: ""},
-      { name: "Void", effect: ""},
-      { name: "Warrior", effect: ""},
-      { name: "Well", effect: ""},
-    ];
+const drawTitles = [
+  "Party Gathers",
+  "Adventure Begins",
+  "Journey",
+  "Entrance",
+  "First Challenge",
+  "Second Challenge",
+  "Third Challenge",
+  "Guardian",
+  "Treasure"
+];
 
-    let remainingCards = [...cards];
+const cards = [
+  { name: "Aberration", effect: "" },
+  { name: "Balance", effect: "" },
+  { name: "Beast", effect: "" },
+  { name: "Book", effect: "" },
+  { name: "Bridge", effect: "" },
+  { name: "Campfire", effect: "" },
+  { name: "Cavern", effect: "" },
+  { name: "Celestial", effect: "" },
+  { name: "Comet", effect: "" },
+  { name: "Construct", effect: "" },
+  { name: "Corpse", effect: "" },
+  { name: "Crossroads", effect: "" },
+  { name: "Donjon", effect: "" },
+  { name: "Door", effect: "" },
+  { name: "Dragon", effect: "" },
+  { name: "Elemental", effect: "" },
+  { name: "Euryale", effect: "" },
+  { name: "Expert", effect: "" },
+  { name: "Fates", effect: "" },
+  { name: "Fey", effect: "" },
+  { name: "Fiend", effect: "" },
+  { name: "Flames", effect: "" },
+  { name: "Fool", effect: "" },
+  { name: "Gem", effect: "" },
+  { name: "Giant", effect: "" },
+  { name: "Humanoid", effect: "" },
+  { name: "Jester", effect: "" },
+  { name: "Key", effect: "" },
+  { name: "Knight", effect: "" },
+  { name: "Mage", effect: "" },
+  { name: "Maze", effect: "" },
+  { name: "Moon", effect: "" },
+  { name: "Ooze", effect: "" },
+  { name: "Path", effect: "" },
+  { name: "Pit", effect: "" },
+  { name: "Priest", effect: "" },
+  { name: "Rogue", effect: "" },
+  { name: "Ruin", effect: "" },
+  { name: "Sage", effect: "" },
+  { name: "Skull", effect: "" },
+  { name: "Sun", effect: "" },
+  { name: "Temple", effect: "" },
+  { name: "Throne", effect: "" },
+  { name: "Tower", effect: "" },
+  { name: "Tree", effect: "" },
+  { name: "Undead", effect: "" },
+  { name: "Void", effect: "" },
+  { name: "Warrior", effect: "" }
+];
 
-    const resultContainer = document.getElementById("resultContainer");
-    const button = document.getElementById("drawBtn");
+let remainingCards = [...cards];
 
-    button.addEventListener("click", drawNineCards);
+const resultContainer = document.getElementById("resultContainer");
+const button = document.getElementById("drawBtn");
 
-    async function drawNineCards() {
-      resultContainer.innerHTML = "";
-    
-    if (remainingCards.length < 9) {
-      remainingCards = [...cards];
-      alert("Not enough cards left. Reshuffling deck...");
-    }
+button.addEventListener("click", drawNineCards);
 
-    for (let i = 0; i < 9; i++) {
-      await drawOneCardAnimated();
-    }
-    }
+async function drawNineCards() {
+  resultContainer.innerHTML = "";
 
-    function drawRandomCard() {
-      const index = Math.floor(Math.random() * remainingCards.length);
-      return remainingCards.splice(index, 1)[0];
-    }
+  if (remainingCards.length < 9) {
+    remainingCards = [...cards];
+    alert("Not enough cards left. Reshuffling deck...");
+  }
 
-    const index = resultContainer.children.length;
-    const title = drawTitles[index] || "";
+  for (let i = 0; i < 9; i++) {
+    await drawOneCardAnimated(i);
+  }
+}
+
+function drawRandomCard() {
+  const index = Math.floor(Math.random() * remainingCards.length);
+  return remainingCards.splice(index, 1)[0];
+}
+
+function drawOneCardAnimated(i) {
+  return new Promise((resolve) => {
+    const cardData = drawRandomCard();
+    const title = drawTitles[i] || "";
 
     const wrapper = document.createElement("div");
-      wrapper.style.display = "flex";
-      wrapper.style.flexDirection = "column";
-      wrapper.style.alignItems = "center";
+    wrapper.style.display = "flex";
+    wrapper.style.flexDirection = "column";
+    wrapper.style.alignItems = "center";
 
     const titleEl = document.createElement("div");
-      titleEl.innerText = title;
-      titleEl.style.marginBottom = "8px";
-      titleEl.style.fontSize = "14px";
-      titleEl.style.opacity = "0.8";
+    titleEl.innerText = title;
+    titleEl.style.marginBottom = "8px";
+    titleEl.style.fontSize = "14px";
+    titleEl.style.opacity = "0.8";
 
     const cardEl = document.createElement("div");
-      cardEl.classList.add("card");
-      cardEl.innerText = cardData.effect
+    cardEl.classList.add("card");
+    cardEl.innerText = cardData.effect
       ? `${cardData.name}\n${cardData.effect}`
       : cardData.name;
 
-      wrapper.appendChild(titleEl);
-      wrapper.appendChild(cardEl);
-      resultContainer.appendChild(wrapper);
+    wrapper.appendChild(titleEl);
+    wrapper.appendChild(cardEl);
+    resultContainer.appendChild(wrapper);
 
-      // animation trigger
-      setTimeout(() => {
-        cardEl.classList.add("show");
-      }, 50);
+    setTimeout(() => {
+      cardEl.classList.add("show");
+    }, 50);
+
+    setTimeout(resolve, 400);
+  });
+}
   </script>
 </body>
 </html>
