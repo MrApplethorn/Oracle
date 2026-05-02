@@ -6,19 +6,27 @@ body {
       color: white;
       }
 button {
-      font-family: 'Germania One', sans-serif;
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 8px 16px;
-      background: #2a2a3d;
-      color: #f5e6b3;
-      border: 2px solid #c9a44c;
-      border-radius: 6px;
-      box-shadow: 
-            0 0 8px rgba(201, 164, 76, 0.4),
-            inset 0 0 6px rgba(0,0,0,0.6);
-      cursor: pointer;
+  font-family: 'Germania One', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  padding: 10px 20px;
+  margin-top: 20px;
+
+  color: #f5e6b3;
+  background: linear-gradient(145deg, #2a2a3d, #1a1a2a);
+
+  border: 2px solid #c9a44c;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  box-shadow: 
+    0 0 10px rgba(201, 164, 76, 0.4),
+    inset 0 0 6px rgba(0,0,0,0.6);
+
+  transition: all 0.2s ease;
 }
 button:hover {
       transform: scale(1.05);
