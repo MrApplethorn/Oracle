@@ -3,123 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Deck of Many Things</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Germania One', sans-serif;
-      text-align: center;
-      padding: 50px;
-      background: #1e1e2f;
-      color: white;
-    }
-    button {
-      font-family: 'Germania One', sans-serif;
-      padding: 12px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    #result {
-      margin-top: 30px;
-      font-size: 20px;
-      background: #333;
-      padding: 20px;
-      border-radius: 10px;
-      display: inline-block;
-      max-width: 500px;
-      transition: transform 0.2s;
-    }
-    #result:hover {
-      transform: scale(1.05);
-    }
-    #resultContainer {
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-    .card {
-      width: 180px;
-      min-height: 200px;
-      background: #444;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 15px;
-      font-size: 13px;
-      transform: scale(0) rotateY(90deg);
-      transition: transform 0.4s ease;
-      white-space: pre-line;
-      overflow-y: auto;
-    }
-    .card.show {
-      transform: scale(1) rotateY(0deg);
-    }
-    #resultContainer > div {
-      margin-bottom: 15px;
-    }
-    .flip-card {
-      width: 260px;
-      height: 450px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-    .flip-inner {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
-    }
-    .flip-card.flipped .flip-inner {
-      transform: rotateY(180deg);
-    }
-    .card-front,
-    .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      top: 0;
-      left: 0;
-    }
-    .card-front img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .card-back {
-      background: #444;
-      color: white;
-      transform: rotateY(180deg);
-      padding: 16px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .flip-card:hover {
-      transform: scale(1.03);
-    }
-    .card-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-    .card-text {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-  </style>
+  
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Deck of Many Things</h1>
