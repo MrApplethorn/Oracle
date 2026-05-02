@@ -43,19 +43,21 @@
     }
 
     .card {
-      width: 100px;
-      height: 140px;
+      width: 180px;
+      min-height: 200px;
       background: #444;
       border-radius: 10px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 10px;
-      font-size: 14px;
+      padding: 15px;
+      font-size: 13px;
       transform: scale(0) rotateY(90deg);
       transition: transform 0.4s ease;
       white-space: pre-line;
+      overflow-y: auto;
     }
 
     .card.show {
@@ -240,8 +242,18 @@ function drawOneCardAnimated(i) {
     const cardEl = document.createElement("div");
     cardEl.classList.add("card");
 
-    // ✅ FIX: set text AFTER creating element
-    cardEl.innerText = value;
+    const parts = value.split("\n");
+    const name = parts[0] || "";
+    const description = parts.slice(1).join("\n");
+
+    cardEl.innerHTML = `
+      <div style="font-size:16px; font-weight:bold; margin-bottom:8px;">
+        ${name}
+      </div>
+      <div style="font-size:12px; opacity:0.9;">
+        ${description}
+      </div>
+    `;
 
     wrapper.appendChild(titleEl);
     wrapper.appendChild(cardEl);
