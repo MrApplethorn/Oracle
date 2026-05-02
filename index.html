@@ -90,59 +90,92 @@ const drawTitles = [
 const cards = [
   {
     name: "Aberration",
+    person: "Someone with a distorted view of reality, perhaps a cultist or a warlock of the Great Old One; perhaps simply an eccentric person with a nonconformist style." ,
+    creature: "A creature corrupted by the influence of the Far Realm, or an Aberration.",
+    place: "A place where the laws of physics or magic are suspended or distorted.",
+    treasure: "An art object that reflects a warped view of reality, or a magic item made by Aberrations.",
+    situation: "An incursion of energy or creatures from the Far Realm or the deep Underdark."
+  },
+  {
+    name: "Aberration Reversed",
+    person: "A person (perhaps a druid) dedicated to preserving nature against corrupting influences." ,
+    creature: "A creature that has resisted the corruption of its nature, or a trap that deals psychic damage.",
+    place: "A place where nature has overgrown the remnants of a corrupting influence.",
+    treasure: "An art object depicting the triumph of nature over corruption, or a magic item useful against Aberrations (such as a Ring of Mind Shielding).",
+    situation: "People or creatures fighting against the influence of Aberrations."
+  },
+  {
+    name: "Balance",
+    person: "A fair-minded person who can see multiple perspectives and judge impartially." ,
+    creature: "A trap, a Beast, a Construct, or an otherwise impartial foe.",
+    place: "A place where different forces exist in balance—such as a civilization in balance with nature, a land in balance with water, or chaos in balance with order.",
+    treasure: "A treasure with value to two competing factions, or with two equal magical powers.",
+    situation: "A situation where maintaining balance is important: keeping rivals satisfied, preserving the balance of power among different authorities, or rejecting false dichotomies and forced choices."
+  },
+  {
+    name: "Balance Reversed",
+    person: "A judgmental or biased person willfully ignoring one perspective in favor of another." ,
+    creature: "A Celestial, a Fiend, or some other creature strongly associated with a particular alignment or ideology.",
+    place: "A place where the balance of elemental or natural forces has been upset, with negative consequences.",
+    treasure: "A treasure valuable only to certain people, or that can be used only in a very specific way.",
+    situation: "Something being over- or undervalued."
+  },
+  {
+    name: "Beast",
+    person: "A person who avoids the comforts of civilization or indulges predatory attitudes." ,
+    creature: "A Beast, or a similar creature (such as a Fey or a Monstrosity) that is animal-like; alternatively, a pit or other confined space with a trapped animal within.",
+    place: "A place where animals roam freely.",
+    treasure: "A treasure that incorporates fur, feathers, bones, or claws from a Beast, or a magic item that allows transformation into a Beast (such as a Cloak of the Bat or Staff of the Python).",
+    situation: "A situation involving hunting animals or animals preying on people."
+  },
+  {
+    name: "Beast Reversed",
+    person: "A person who fiercely represses urges they deem 'bestial' in themselves or others." ,
+    creature: "A domesticated animal or a familiar.",
+    place: "A place where animals are contained, such as a farm or a zoo.",
+    treasure: "An ornate saddle, a goad, or another item related to the use of domestic animals, or a magic item that allows control of Beasts (such as a Potion of Animal Friendship).",
+    situation: "Domestic animals rebelling against people's control."
+  },
+  {
+    name: "Book",
+    person: "A writer, poet, or compulsive note-taker." ,
+    creature: "A creature that keeps an exhaustive diary in some form, or that seeks a scribe to record its deeds.",
+    place: "A scriptorium or printing press.",
+    treasure: "A valuable or magical pen, an ink vial, or a set of pigments (such as Nolzur's Marvelous Pigments).",
+    situation: "A situation that requires gleaning information from written clues."
+  },
+  {
+    name: "Book Reversed",
+    person: "A well-educated person who reads often." ,
+    creature: "A trap involving written runes (such as a Glyph of Warding or Symbol spell).",
+    place: "A library or another storehouse of written knowledge.",
+    treasure: "A valuable or magical written work, such as a book or scroll.",
+    situation: "Secrets that should never have been discovered but were written down."
+  },
+  {
+    name: "Bridge",
+    person: "A mediator who enjoys helping others overcome misunderstandings or grievances." ,
+    creature: "Someone who coordinates the efforts of different kinds of creatures, such as a mind flayer mastermind using grimlocks and trolls as agents.",
+    place: "A bridge across a river or chasm.",
+    treasure: "An art object depicting a bridge, or a magic item intended to help overcome obstacles (such as Boots of Striding and Springing).",
+    situation: "An urgent need for bridges between long-opposed factions."
+  },
+  {
+    name: "Bridge Reversed",
+    person: "A person who is part of a longstanding feud between two families or groups." ,
+    creature: "A creature that lairs near, on, or under a bridge and either collects tolls from those using the bridge or tries to eat them.",
+    place: "A river or chasm with no bridge, or where the bridge is unsafe or has collapsed.",
+    treasure: "An art object depicting walls, barriers. or a labyrinth; alternatively, a magic item that creates magical walls (such as a Cube of Force).",
+    situation: "Open conflict between two families or groups."
+  },
+  {
+    name: "",
     person: "" ,
     creature: "",
     place: "",
     treasure: "",
     situation: ""
-  },
-  { name: "Balance", effect: "" },
-  { name: "Beast", effect: "" },
-  { name: "Book", effect: "" },
-  { name: "Bridge", effect: "" },
-  { name: "Campfire", effect: "" },
-  { name: "Cavern", effect: "" },
-  { name: "Celestial", effect: "" },
-  { name: "Comet", effect: "" },
-  { name: "Construct", effect: "" },
-  { name: "Corpse", effect: "" },
-  { name: "Crossroads", effect: "" },
-  { name: "Donjon", effect: "" },
-  { name: "Door", effect: "" },
-  { name: "Dragon", effect: "" },
-  { name: "Elemental", effect: "" },
-  { name: "Euryale", effect: "" },
-  { name: "Expert", effect: "" },
-  { name: "Fates", effect: "" },
-  { name: "Fey", effect: "" },
-  { name: "Fiend", effect: "" },
-  { name: "Flames", effect: "" },
-  { name: "Fool", effect: "" },
-  { name: "Gem", effect: "" },
-  { name: "Giant", effect: "" },
-  { name: "Humanoid", effect: "" },
-  { name: "Jester", effect: "" },
-  { name: "Key", effect: "" },
-  { name: "Knight", effect: "" },
-  { name: "Mage", effect: "" },
-  { name: "Maze", effect: "" },
-  { name: "Moon", effect: "" },
-  { name: "Ooze", effect: "" },
-  { name: "Path", effect: "" },
-  { name: "Pit", effect: "" },
-  { name: "Priest", effect: "" },
-  { name: "Rogue", effect: "" },
-  { name: "Ruin", effect: "" },
-  { name: "Sage", effect: "" },
-  { name: "Skull", effect: "" },
-  { name: "Sun", effect: "" },
-  { name: "Temple", effect: "" },
-  { name: "Throne", effect: "" },
-  { name: "Tower", effect: "" },
-  { name: "Tree", effect: "" },
-  { name: "Undead", effect: "" },
-  { name: "Void", effect: "" },
-  { name: "Warrior", effect: "" }
+  }
 ];
 
 let remainingCards = [...cards];
