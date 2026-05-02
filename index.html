@@ -12,7 +12,7 @@
 </head>
 <body>
   <h1>Deck of Many Things</h1>
-  <button id="drawBtn">Draw Card</button>
+  <button id="drawBtn">Draw Cards</button>
   <div id="resultContainer"></div>
   
   <script src="cards.js"></script>
@@ -50,6 +50,8 @@
     button.addEventListener("click", drawNineCards);
     
     async function drawNineCards() {
+      button.style.display = "none"; // 👈 hide button
+      
       resultContainer.innerHTML = "";
     
       if (remainingCards.length < 9) {
