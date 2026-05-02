@@ -7,39 +7,45 @@ body {
       }
 button {
   font-family: 'Germania One', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
   letter-spacing: 1px;
   text-transform: uppercase;
 
-  padding: 10px 20px;
-  margin-top: 20px;
+  padding: 6px 14px;
 
   color: #f5e6b3;
-  background: linear-gradient(145deg, #2a2a3d, #1a1a2a);
+  background: #2a2a3d;
 
   border: 2px solid #c9a44c;
-  border-radius: 8px;
+  border-radius: 6px;
 
   cursor: pointer;
 
   box-shadow: 
-    0 0 10px rgba(201, 164, 76, 0.4),
+    0 0 8px rgba(201, 164, 76, 0.4),
     inset 0 0 6px rgba(0,0,0,0.6);
 
-  transition: all 0.2s ease;
-}
-button:hover {
-      transform: scale(1.05);
-      box-shadow: 
-            0 0 14px rgba(201, 164, 76, 0.7),
-            inset 0 0 8px rgba(0,0,0,0.8);
+  position: relative;
 }
 
-button:active {
-      transform: scale(0.97);
-      box-shadow: 
-            0 0 6px rgba(201, 164, 76, 0.5),
-            inset 0 0 10px rgba(0,0,0,0.9);
+/* decorative diamonds */
+button::before,
+button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: #c9a44c;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+button::before {
+  left: -6px;
+}
+
+button::after {
+  right: -6px;
 }
 #result {
       margin-top: 30px;
