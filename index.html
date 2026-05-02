@@ -95,7 +95,7 @@ const cards = [
     place: "",
     treasure: "",
     situation: ""
-  }
+  },
   { name: "Balance", effect: "" },
   { name: "Beast", effect: "" },
   { name: "Book", effect: "" },
@@ -193,8 +193,6 @@ function drawOneCardAnimated(i) {
       .filter(Boolean)
       .join("\n");
 
-    cardEl.innerText = value;
-
     const wrapper = document.createElement("div");
     wrapper.style.display = "flex";
     wrapper.style.flexDirection = "column";
@@ -208,9 +206,9 @@ function drawOneCardAnimated(i) {
 
     const cardEl = document.createElement("div");
     cardEl.classList.add("card");
-    cardEl.innerText = cardData.effect
-      ? `${cardData.name}\n${cardData.effect}`
-      : cardData.name;
+
+    // ✅ FIX: set text AFTER creating element
+    cardEl.innerText = value;
 
     wrapper.appendChild(titleEl);
     wrapper.appendChild(cardEl);
