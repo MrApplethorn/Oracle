@@ -153,59 +153,56 @@
     let remainingCards = [...cards];
 
     const resultContainer = document.getElementById("resultContainer");
-const button = document.getElementById("drawBtn");
+    const button = document.getElementById("drawBtn");
 
-button.addEventListener("click", drawNineCards);
+    button.addEventListener("click", drawNineCards);
 
-async function drawNineCards() {
-  resultContainer.innerHTML = "";
+    async function drawNineCards() {
+      resultContainer.innerHTML = "";
+    
+    if (remainingCards.length < 9) {
+      remainingCards = [...cards];
+      alert("Not enough cards left. Reshuffling deck...");
+    }
 
-  if (remainingCards.length < 9) {
-    remainingCards = [...cards];
-    alert("Not enough cards left. Reshuffling deck...");
-  }
+    for (let i = 0; i < 9; i++) {
+      await drawOneCardAnimated();
+    }
+    }
 
-  for (let i = 0; i < 9; i++) {
-    await drawOneCardAnimated();
-  }
-}
+    function drawRandomCard() {
+      const index = Math.floor(Math.random() * remainingCards.length);
+      return remainingCards.splice(index, 1)[0];
+    }
 
-function drawRandomCard() {
-  const index = Math.floor(Math.random() * remainingCards.length);
-  return remainingCards.splice(index, 1)[0];
-}
+    const index = resultContainer.children.length;
+    const title = drawTitles[index] || "";
 
-function drawOneCardAnimated() {
-  return new Promise((resolve) => {
-    const cardData = drawRandomCard();
+    const wrapper = document.createElement("div");
+      wrapper.style.display = "flex";
+      wrapper.style.flexDirection = "column";
+      wrapper.style.alignItems = "center";
+
+    const titleEl = document.createElement("div");
+      titleEl.innerText = title;
+      titleEl.style.marginBottom = "8px";
+      titleEl.style.fontSize = "14px";
+      titleEl.style.opacity = "0.8";
 
     const cardEl = document.createElement("div");
-    cardEl.classList.add("card");
-    const index = resultContainer.children.length;
+      cardEl.classList.add("card");
+      cardEl.innerText = cardData.effect
+      ? `${cardData.name}\n${cardData.effect}`
+      : cardData.name;
 
-const title = drawTitles[index] || "";
+      wrapper.appendChild(titleEl);
+      wrapper.appendChild(cardEl);
+      resultContainer.appendChild(wrapper);
 
-cardEl.innerHTML = `
-  <div style="font-size:12px; opacity:0.8; margin-bottom:6px;">
-    ${title}
-  </div>
-  <div style="font-weight:bold;">
-    ${cardData.name}
-  </div>
-`;
-
-    resultContainer.appendChild(cardEl);
-
-    // trigger animation
-    setTimeout(() => {
-      cardEl.classList.add("show");
-    }, 50);
-
-    // wait before next card
-    setTimeout(resolve, 400);
-  });
-}
+      // animation trigger
+      setTimeout(() => {
+        cardEl.classList.add("show");
+      }, 50);
   </script>
-
 </body>
 </html>
