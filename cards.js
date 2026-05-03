@@ -2,47 +2,47 @@ const drawTitles = [
   {
     title: "Party Gathers",
     keys: ["name", "situation"],
-    description: "This card represents the situation the characters are in before the adventure starts."
+    description: "The situation the characters are in before the adventure starts."
   },
   {
     title: "Adventure Begins",
     keys: ["name", "person"],
-    description: "This card represents how the adventure starts. The situation that starts the action or an individual who gives the adventurers a quest"
+    description: "How the adventure starts. The situation that starts the action or an individual who gives the adventurers a quest"
   },
   {
     title: "Journey",
     keys: ["name", "place"],
-    description: "This card describes the transition from the introduction to the adventure location, something the characters encounter along the way."
+    description: "The transition from the introduction to the adventure location, something the characters encounter along the way."
   },
   {
     title: "Entrance",
     keys: ["name", "place"],
-    description: "This card describes the entrance to the adventure location."
+    description: "The entrance to the adventure location."
   },
   {
     title: "First Challenge",
     keys: ["name", "creature"],
-    description: "These cards describe the primary challenge the characters must face in the adventure."
+    description: "The primary challenge the characters must face in the adventure. It is not uncommon for the person described in Adventure Begins to become a challenge later on in the story."
   },
   {
     title: "Second Challenge",
     keys: ["name", "creature"],
-    description: "These cards describe the secondary challenge the characters must face in the adventure."
+    description: "The secondary challenge the characters must face in the adventure. It is not uncommon for the person described in Adventure Begins to become a challenge later on in the story."
   },
   {
     title: "Third Challenge",
     keys: ["name", "creature"],
-    description: "These cards describe the tertiary challenge the characters must face in the adventure."
+    description: "The tertiary challenge the characters must face in the adventure. It is not uncommon for the person described in the Adventure Begins to become a challenge later on in the story."
   },
   {
     title: "Guardian",
     keys: ["name", "creature"],
-    description: "This card describes the final obstacle the characters must overcome to achieve their goal and claim the Treasure."
+    description: "The final obstacle the characters must overcome to achieve their goal and claim the Treasure. This might also be a previous challenge recurring in their ultimate form."
   },
   {
     title: "Treasure",
     keys: ["name", "treasure"],
-    description: "This card describes a treasure that is the ultimate goal or reward of the adventure."
+    description: "A treasure that is the ultimate goal or reward of the adventure. If it offers any benefits it is likely to be used by the Guardian in the final confrontation with the characters."
   }
 ];
 const cards = [
