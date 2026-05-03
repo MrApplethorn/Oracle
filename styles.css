@@ -55,7 +55,10 @@ body {
 }
 .card-back {
       background: #444;
-      color: white;
+      background-image: url('images/back.webp');
+      background-size: cover;
+      background-position: center;
+      color: #f5e6b3;
       transform: rotateY(180deg);
       padding: 16px;
       box-sizing: border-box;
