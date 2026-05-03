@@ -5,19 +5,6 @@ body {
       background: #1e1e2f;
       color: white;
       }
-/*#result {
-      margin-top: 30px;
-      font-size: 20px;
-      background: #333;
-      padding: 20px;
-      border-radius: 10px;
-      display: inline-block;
-      max-width: 500px;
-      transition: transform 0.2s;
-}
-#result:hover {
-      transform: scale(1.05);
-}*/
 #resultContainer {
       margin-top: 30px;
       display: flex;
@@ -25,26 +12,6 @@ body {
       justify-content: center;
       gap: 15px;
 }
-/* .card {
-      width: 180px;
-      min-height: 200px;
-      background: #444;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 15px;
-      font-size: 13px;
-      transform: scale(0) rotateY(90deg);
-      transition: transform 0.4s ease;
-      white-space: pre-line;
-      overflow-y: auto;
-}
-.card.show {
-      transform: scale(1) rotateY(0deg);
-} */
 #resultContainer > div {
       display: flex;
       flex-direction: column;
@@ -136,16 +103,18 @@ body {
       right: -6px;
 }
 .card-placeholder {
-  border: 2px dashed #aaa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px;
-  box-sizing: border-box;
+      border: 2px dashed #aaa;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
 }
 .card-placeholder,
 .flip-card {
-  width: 260px;
-  height: 450px;
+      width: 260px;
+      height: 450px;
+}
+.centered {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 }
