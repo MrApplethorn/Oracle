@@ -91,7 +91,7 @@ body {
 }
 
 .card-back {
-  background: #444;
+  background: #444; url('images/back.webp') center / cover no-repeat;
   color: white;
   transform: rotateY(180deg);
   padding: 16px;
@@ -101,6 +101,22 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.card-back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  z-index: 0;
+}
+
+.card-back .card-title,
+.card-back .card-text,
+.card-back .card-delete {
+  position: relative;
+  z-index: 1;
 }
 
 .flip-card:hover {
