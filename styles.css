@@ -60,7 +60,7 @@ body {
       background-position: center;
       color: #f5e6b3;
       transform: rotateY(180deg);
-      padding: 16px;
+      padding: 25px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
