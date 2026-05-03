@@ -57,7 +57,6 @@
         drawTitles.forEach((title, i) => {
           const wrapper = document.createElement("div");
           wrapper.style.position = "relative";
-          wrapper.style.paddingBottom = "260px";
           const titleEl = document.createElement("div");
           titleEl.innerText = title;
           titleEl.classList.add("card-label");
@@ -96,11 +95,14 @@
         const cardEl = document.createElement("div");
         cardEl.classList.add("flip-card");
 
-        const randomRotation = Math.random() * 20 - 10; // -10° to +10°
+        const randomRotation = Math.random() * 20 - 10;
 
+        cardEl.style.position = "absolute";
+        cardEl.style.top = "0";
+        cardEl.style.left = "50%";
+        cardEl.style.transform = `translate(-50%, -40px) scale(0.95) rotate(${randomRotation}deg)`;
         cardEl.style.zIndex = "2";
         cardEl.style.opacity = "0";
-        cardEl.style.transform = `translateY(-40px) scale(0.95) rotate(${randomRotation}deg)`;
       
         const inner = document.createElement("div");
         inner.classList.add("flip-inner");
@@ -131,17 +133,15 @@
         wrapper.appendChild(cardEl);
       
       requestAnimationFrame(() => {
-  cardEl.style.transition = "transform 0.5s ease, opacity 0.4s ease";
-  cardEl.style.opacity = "1";
-  cardEl.style.transform = `translateY(0) scale(1) rotate(${randomRotation}deg)`;
-});
+        cardEl.style.transition = "transform 0.5s ease, opacity 0.4s ease";
+        cardEl.style.opacity = "1";
+        cardEl.style.transform = `translate(-50%, 0) scale(1) rotate(${randomRotation}deg)`;
+      });
       }
-      
       function drawRandomCard() {
         const index = Math.floor(Math.random() * remainingCards.length);
         return remainingCards.splice(index, 1)[0];
       }
-      
       function drawOneCardAnimated(i) {
         return new Promise((resolve) => {
           const cardData = drawRandomCard();
