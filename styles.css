@@ -168,6 +168,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   #resultContainer {
     grid-template-columns: 1fr;
     justify-items: center;
