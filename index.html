@@ -29,7 +29,7 @@
           titleEl.innerText = entry.title;
           titleEl.classList.add("card-label");
           titleEl.style.cursor = "pointer";
-          titleEl.addEventListener("click", () => drawCardAtIndex(i, wrapper));
+          titleEl.addEventListener("click", () => drawCardAtIndex(i, stack));
           const placeholder = document.createElement("div");
           placeholder.classList.add("card-placeholder");
           placeholder.innerText = entry.description;
@@ -45,6 +45,7 @@
         if (remainingCards.length === 0) {
           remainingCards = [...cards];
           alert("Deck reshuffled!");
+          stack.appendChild(cardEl);
         }
   
         const cardData = drawRandomCard();
@@ -124,10 +125,25 @@
           const description = parts.slice(1).join("\n");
       
           const wrapper = document.createElement("div");
-      
+          wrapper.classList.add("card-wrapper");
+          
           const titleEl = document.createElement("div");
-          titleEl.innerText = title;
+          titleEl.innerText = entry.title;
           titleEl.classList.add("card-label");
+          titleEl.style.cursor = "pointer";
+          titleEl.addEventListener("click", () => drawCardAtIndex(i, wrapper));
+          
+          const stack = document.createElement("div");
+          stack.classList.add("card-stack");
+          
+          const placeholder = document.createElement("div");
+          placeholder.classList.add("card-placeholder");
+          placeholder.innerText = entry.description;
+          
+          stack.appendChild(placeholder);
+          wrapper.appendChild(titleEl);
+          wrapper.appendChild(stack);
+          resultContainer.appendChild(wrapper);
       
           const cardEl = document.createElement("div");
           cardEl.classList.add("flip-card");
