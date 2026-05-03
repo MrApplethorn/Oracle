@@ -184,6 +184,7 @@ body {
 @media (max-width: 768px) {
   #resultContainer {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .card-stack-area {
