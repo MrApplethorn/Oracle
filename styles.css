@@ -103,6 +103,9 @@ body {
       right: -6px;
 }
 .card-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 2px dashed #aaa;
       text-align: center;
       padding: 10px;
@@ -112,9 +115,4 @@ body {
 .flip-card {
       width: 260px;
       height: 450px;
-}
-.centered {
-      display: flex;
-      align-items: center;
-      justify-content: center;
 }
