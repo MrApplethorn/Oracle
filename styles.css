@@ -26,6 +26,13 @@ body {
 .flip-card {
       perspective: 1000px;
       cursor: pointer;
+      opacity: 0;
+      transform: translateY(-200px) rotate(-20deg) scale(0.8);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.flip-card.dealt {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg) scale(1);
 }
 .flip-inner {
       width: 100%;
