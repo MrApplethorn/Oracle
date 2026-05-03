@@ -13,6 +13,7 @@
 <body>
   <h1>Deck of Many Things</h1>
   <div id="resultContainer"></div>
+  <div id="deck"></div>
   
   <script src="cards.js"></script>
   
@@ -134,37 +135,35 @@ const titleDescriptions = {
 
   wrapper.appendChild(cardEl);
 
-// Get final position
-const rect = cardEl.getBoundingClientRect();
+// get deck position
+const deck = document.getElementById("deck");
+const deckRect = deck.getBoundingClientRect();
 
-// Define deck position (bottom center of screen)
-const deckX = window.innerWidth / 2;
-const deckY = window.innerHeight;
+// force final layout position first
+cardEl.style.visibility = "hidden";
 
-// Calculate offset from deck → final position
-const offsetX = deckX - (rect.left + rect.width / 2);
-const offsetY = deckY - (rect.top + rect.height / 2);
+// wait for layout to settle
+requestAnimationFrame(() => {
+  const rect = cardEl.getBoundingClientRect();
 
-// Start card at deck position
-cardEl.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(0.8) rotate(${Math.random() * 40 - 20}deg)`;
-cardEl.style.opacity = "0";
+  const dx = deckRect.left + deckRect.width / 2 - (rect.left + rect.width / 2);
+  const dy = deckRect.top + deckRect.height / 2 - (rect.top + rect.height / 2);
 
-// Force layout so browser registers starting position
-cardEl.getBoundingClientRect();
+  // start at deck
+  cardEl.style.visibility = "visible";
+  cardEl.style.transform = `
+    translate(${dx}px, ${dy}px)
+    scale(0.6)
+    rotate(${Math.random() * 40 - 20}deg)
+  `;
+  cardEl.style.opacity = "0";
 
-      const delay = i * 120;
-
-setTimeout(() => {
+  // animate to final position
   requestAnimationFrame(() => {
-    cardEl.style.transform = `translate(0, 0) scale(1) rotate(0deg)`;
+    cardEl.style.transition = "transform 0.6s cubic-bezier(.2,.9,.2,1), opacity 0.4s";
+    cardEl.style.transform = "translate(0,0) scale(1) rotate(0deg)";
     cardEl.style.opacity = "1";
   });
-}, delay);
-
-// Animate to final position
-requestAnimationFrame(() => {
-  cardEl.style.transform = `translate(0, 0) scale(1) rotate(0deg)`;
-  cardEl.style.opacity = "1";
 });
 }
     
