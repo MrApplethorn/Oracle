@@ -19,29 +19,41 @@
   <script>
     let remainingCards = [...cards];
     
-    const drawTitles = [
-      "Party Gathers",
-      "Adventure Begins",
-      "Journey",
-      "Entrance",
-      "First Challenge",
-      "Second Challenge",
-      "Third Challenge",
-      "Guardian",
-      "Treasure"
-    ];
+const drawTitles = [
+  "Party Gathers",
+  "Adventure Begins",
+  "Journey",
+  "Entrance",
+  "First Challenge",
+  "Second Challenge",
+  "Third Challenge",
+  "Guardian",
+  "Treasure"
+];
     
-    const titleRules = {
-      "Party Gathers": ["name", "situation"],
-      "Adventure Begins": ["name", "person"],
-      "Journey": ["name", "place"],
-      "Entrance": ["name", "place"],
-      "First Challenge": ["name", "creature"],
-      "Second Challenge": ["name", "creature"],
-      "Third Challenge": ["name", "creature"],
-      "Guardian": ["name", "creature"],
-      "Treasure": ["name", "treasure"]
-    };
+const titleRules = {
+  "Party Gathers": ["name", "situation"],
+  "Adventure Begins": ["name", "person"],
+  "Journey": ["name", "place"],
+  "Entrance": ["name", "place"],
+  "First Challenge": ["name", "creature"],
+  "Second Challenge": ["name", "creature"],
+  "Third Challenge": ["name", "creature"],
+  "Guardian": ["name", "creature"],
+  "Treasure": ["name", "treasure"]
+};
+
+const titleDescriptions = {
+  "Party Gathers": "This card represents the situation the characters are in before the adventure starts.",
+  "Adventure Begins": "This card represents how the adventure starts. The situation that starts the action or an individual who gives the adventurers a quest",
+  "Journey": "This card describes the transition from the introduction to the adventure location, something the characters encounter along the way.",
+  "Entrance": "This card describes the entrance to the adventure location.",
+  "First Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
+  "Second Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
+  "Third Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
+  "Guardian": "This card describes the final obstacle the characters must overcome to achieve their goal and claim the Treasure.",
+  "Treasure": "This card describes a treasure that is the ultimate goal or reward of the adventure."
+};
     
     const resultContainer = document.getElementById("resultContainer");
 
@@ -58,14 +70,12 @@
     titleEl.innerText = title;
     titleEl.classList.add("card-label");
 
-    // Make title clickable (requirement 3 👇)
     titleEl.style.cursor = "pointer";
     titleEl.addEventListener("click", () => drawCardAtIndex(i, wrapper));
 
-    // Placeholder (requirement 2 👇)
     const placeholder = document.createElement("div");
     placeholder.classList.add("card-placeholder");
-    placeholder.innerText = "Click to reveal";
+    placeholder.innerText = titleDescriptions[title] || "Unknown event";
 
     wrapper.appendChild(titleEl);
     wrapper.appendChild(placeholder);
