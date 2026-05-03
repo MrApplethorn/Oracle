@@ -163,13 +163,13 @@ body {
   }
 
   .card-stack-area {
-    width: 340px;
-    height: 580px;
+    width: 80vw;
+    height: calc(80vw * 1.73);
   }
 
   .card-placeholder,
   .flip-card {
-    width: 340px;
-    height: 580px;
+    width: 80vw;
+    height: calc(80vw * 1.73);
   }
 }
