@@ -13,7 +13,6 @@
 <body>
   <h1>Deck of Many Things</h1>
   <div id="resultContainer"></div>
-  <div id="deck"></div>
   
   <script src="cards.js"></script>
   
@@ -135,35 +134,13 @@ const titleDescriptions = {
 
   wrapper.appendChild(cardEl);
 
-// get deck position
-const deck = document.getElementById("deck");
-const deckRect = deck.getBoundingClientRect();
+cardEl.style.opacity = "0";
+cardEl.style.transform = "translateY(-40px) scale(0.95) rotate(-3deg)";
 
-// force final layout position first
-cardEl.style.visibility = "hidden";
-
-// wait for layout to settle
 requestAnimationFrame(() => {
-  const rect = cardEl.getBoundingClientRect();
-
-  const dx = deckRect.left + deckRect.width / 2 - (rect.left + rect.width / 2);
-  const dy = deckRect.top + deckRect.height / 2 - (rect.top + rect.height / 2);
-
-  // start at deck
-  cardEl.style.visibility = "visible";
-  cardEl.style.transform = `
-    translate(${dx}px, ${dy}px)
-    scale(0.6)
-    rotate(${Math.random() * 40 - 20}deg)
-  `;
-  cardEl.style.opacity = "0";
-
-  // animate to final position
-  requestAnimationFrame(() => {
-    cardEl.style.transition = "transform 0.6s cubic-bezier(.2,.9,.2,1), opacity 0.4s";
-    cardEl.style.transform = "translate(0,0) scale(1) rotate(0deg)";
-    cardEl.style.opacity = "1";
-  });
+  cardEl.style.transition = "transform 0.5s ease, opacity 0.4s ease";
+  cardEl.style.opacity = "1";
+  cardEl.style.transform = "translateY(0) scale(1) rotate(0deg)";
 });
 }
     
