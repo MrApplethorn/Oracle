@@ -1,146 +1,25 @@
 body {
-      font-family: 'Germania One', sans-serif;
-      text-align: center;
-      padding: 50px;
-      background: #1e1e2f;
-      color: white;
-      }
+  font-family: 'Germania One', sans-serif;
+  text-align: center;
+  padding: 50px;
+  background: #1e1e2f;
+  color: white;
+}
+
 #resultContainer {
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      justify-items: center;
-      margin-bottom: 2rem;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-bottom: 2rem;
 }
-.flip-card {
-      perspective: 1000px;
-      cursor: pointer;
-      opacity: 0;
-      transform: translate(0, 0) scale(0.8);
-      transition: transform 0.6s cubic-bezier(.2,.8,.2,1), opacity 0.4s;
-}
-.flip-card.dealt {
-      opacity: 1;
-      transform: translateY(0) rotate(0deg) scale(1);
-}
-.flip-inner {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
-}
-.flip-card.flipped .flip-inner {
-      transform: rotateY(180deg);
-}
-.card-front,
-.card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      top: 0;
-      left: 0;
-}
-.card-front img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-}
-.card-back {
-      background: #444;
-      background-image: url('images/back.webp');
-      background-size: cover;
-      background-position: center;
-      color: #f5e6b3;
-      transform: rotateY(180deg);
-      padding: 25px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-}
-.flip-card:hover {
-      transform: scale(1.03);
-}
-.card-title {
-      font-size: 18px;
-      margin-bottom: 12px;
-}
-.card-text {
-      font-size: 14px;
-      line-height: 1.5;
-}
-.card-label {
-      font-size: 22px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      border: 2px solid #c9a44c;
-      border-radius: 6px;
-      background: linear-gradient(145deg, #2a2a3d, #1a1a2a);
-      color: #f5e6b3;
-      box-shadow: 
-      0 0 8px rgba(201, 164, 76, 0.4),
-      inset 0 0 6px rgba(0,0,0,0.6);
-      display: inline-block;
-      position: relative;
-      padding: 6px 14px;
-      grid-column: 1;
-      grid-row: 1;
-}
-.card-label::before,
-.card-label::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 10px;
-      height: 10px;
-      background: #c9a44c;
-      transform: translateY(-50%) rotate(45deg);
-} 
-.card-label::before {
-      left: -6px;
-}   
-.card-label::after {
-      right: -6px;
-}
-.card-placeholder {
-      min-height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px dashed #aaa;
-      text-align: center;
-      padding: 10px;
-      box-sizing: border-box;
-}
-.card-placeholder,
-.flip-card {
-      grid-column: 1;
-      grid-row: 2;
-      width: 260px;
-      height: 450px;
-}
+
 .card-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
-}
-
-.card-wrapper .card-label {
-  flex-shrink: 0;
-  margin-bottom: 12px;
-  z-index: 10;
 }
 
 .card-stack-area {
@@ -150,12 +29,157 @@ body {
   flex-shrink: 0;
 }
 
-.card-wrapper .card-placeholder,
-.card-wrapper .flip-card {
+.card-placeholder,
+.flip-card {
   position: absolute;
   top: 0;
   left: 0;
+  width: 260px;
+  height: 450px;
 }
+
+.card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #aaa;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translate(0, 0) scale(0.8);
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1), opacity 0.4s;
+}
+
+.flip-card.dealt {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg) scale(1);
+}
+
+.flip-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  background: #444;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flip-card:hover {
+  transform: scale(1.03);
+}
+
+.card-label {
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border: 2px solid #c9a44c;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #2a2a3d, #1a1a2a);
+  color: #f5e6b3;
+  box-shadow: 
+    0 0 8px rgba(201, 164, 76, 0.4),
+    inset 0 0 6px rgba(0,0,0,0.6);
+  display: inline-block;
+  position: relative;
+  padding: 6px 14px;
+}
+
+.card-label::before,
+.card-label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: #c9a44c;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.card-label::before { left: -6px; }
+.card-label::after  { right: -6px; }
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.card-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.card-delete {
+  font-size: 16px;
+  letter-spacing: 1px;
+  border: 2px solid #c0392b;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #2a1a1a, #1a0a0a);
+  color: #f5b3b3;
+  box-shadow:
+    0 0 8px rgba(192, 57, 43, 0.4),
+    inset 0 0 6px rgba(0,0,0,0.6);
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.card-delete::before,
+.card-delete::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: #c0392b;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.card-delete::before { left: -6px; }
+.card-delete::after  { right: -6px; }
 
 @media (max-width: 768px) {
   #resultContainer {
