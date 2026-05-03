@@ -85,6 +85,13 @@ const titleDescriptions = {
   if (remainingCards.length === 0) {
     remainingCards = [...cards];
     alert("Deck reshuffled!");
+
+    wrapper.appendChild(cardEl);
+
+    // trigger animation
+    setTimeout(() => {
+      cardEl.classList.add("dealt");
+    }, 50);
   }
 
   const cardData = drawRandomCard();
@@ -198,6 +205,16 @@ const titleDescriptions = {
         wrapper.appendChild(cardEl);
         resultContainer.appendChild(wrapper);
     
+        wrapper.appendChild(titleEl);
+        wrapper.appendChild(cardEl);
+        resultContainer.appendChild(wrapper);
+
+        // trigger animation
+        setTimeout(() => {
+          cardEl.classList.add("dealt");
+        }, 50);
+        
+        // delay next card like dealing
         setTimeout(() => {
           resolve();
         }, 400);
