@@ -57,6 +57,7 @@
         drawTitles.forEach((title, i) => {
           const wrapper = document.createElement("div");
           wrapper.style.position = "relative";
+          wrapper.style.paddingBottom = "260px";
           const titleEl = document.createElement("div");
           titleEl.innerText = title;
           titleEl.classList.add("card-label");
@@ -65,8 +66,6 @@
           const placeholder = document.createElement("div");
           placeholder.classList.add("card-placeholder");
           placeholder.innerText = titleDescriptions[title] || "Unknown event";
-          placeholder.style.position = "relative";
-          placeholder.style.zIndex = "1";
       
           wrapper.appendChild(titleEl);
           wrapper.appendChild(placeholder);
@@ -99,10 +98,6 @@
 
         const randomRotation = Math.random() * 20 - 10; // -10° to +10°
 
-        cardEl.style.position = "absolute";
-        cardEl.style.top = "0";
-        cardEl.style.left = "0";
-        cardEl.style.width = "100%";
         cardEl.style.zIndex = "2";
         cardEl.style.opacity = "0";
         cardEl.style.transform = `translateY(-40px) scale(0.95) rotate(${randomRotation}deg)`;
