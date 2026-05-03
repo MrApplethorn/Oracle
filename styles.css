@@ -5,49 +5,7 @@ body {
       background: #1e1e2f;
       color: white;
       }
-button {
-  font-family: 'Germania One', sans-serif;
-  font-size: 22px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  padding: 6px 14px;
-
-  color: #f5e6b3;
-  background: #2a2a3d;
-
-  border: 2px solid #c9a44c;
-  border-radius: 6px;
-
-  cursor: pointer;
-
-  box-shadow: 
-    0 0 8px rgba(201, 164, 76, 0.4),
-    inset 0 0 6px rgba(0,0,0,0.6);
-
-  position: relative;
-}
-
-/* decorative diamonds */
-button::before,
-button::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  background: #c9a44c;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-button::before {
-  left: -6px;
-}
-
-button::after {
-  right: -6px;
-}
-#result {
+/*#result {
       margin-top: 30px;
       font-size: 20px;
       background: #333;
@@ -59,7 +17,7 @@ button::after {
 }
 #result:hover {
       transform: scale(1.05);
-}
+}*/
 #resultContainer {
       margin-top: 30px;
       display: flex;
@@ -67,7 +25,7 @@ button::after {
       justify-content: center;
       gap: 15px;
 }
-.card {
+/* .card {
       width: 180px;
       min-height: 200px;
       background: #444;
@@ -86,7 +44,7 @@ button::after {
 }
 .card.show {
       transform: scale(1) rotateY(0deg);
-}
+} */
 #resultContainer > div {
       display: flex;
       flex-direction: column;
@@ -94,8 +52,6 @@ button::after {
       gap: 6px;
 }
 .flip-card {
-      width: 260px;
-      height: 450px;
       perspective: 1000px;
       cursor: pointer;
 }
@@ -161,9 +117,7 @@ button::after {
       inset 0 0 6px rgba(0,0,0,0.6);
       display: inline-block;
       position: relative;
-      background: #2a2a3d;
       padding: 6px 14px;
-      text-transform: uppercase;
 }
 .card-label::before,
 .card-label::after {
