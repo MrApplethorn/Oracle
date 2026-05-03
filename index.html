@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Deck of Many Things</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,26 +20,27 @@
     <script>
       let remainingCards = [...cards];
       const resultContainer = document.getElementById("resultContainer");
+
       function renderTitles() {
         resultContainer.innerHTML = "";
         drawTitles.forEach((entry, i) => {
           const wrapper = document.createElement("div");
           wrapper.classList.add("card-wrapper");
-      
+
           const titleEl = document.createElement("div");
           titleEl.innerText = entry.title;
           titleEl.classList.add("card-label");
           titleEl.style.cursor = "pointer";
-      
+
           const stack = document.createElement("div");
           stack.classList.add("card-stack-area");
-      
+
           const placeholder = document.createElement("div");
           placeholder.classList.add("card-placeholder");
           placeholder.innerText = entry.description;
-      
+
           titleEl.addEventListener("click", () => drawCardAtIndex(i, stack));
-      
+
           stack.appendChild(placeholder);
           wrapper.appendChild(titleEl);
           wrapper.appendChild(stack);
@@ -48,27 +48,25 @@
         });
       }
       renderTitles();
-  
-      function drawCardAtIndex(i, wrapper) {
+
+      function drawCardAtIndex(i, stack) {
         if (remainingCards.length === 0) {
           remainingCards = [...cards];
           alert("Deck reshuffled!");
-          stack.appendChild(cardEl);
         }
-  
+
         const cardData = drawRandomCard();
-        const title = drawTitles[i];
         const keys = drawTitles[i].keys;
-      
+
         const value = keys
           .map(k => cardData[k])
           .filter(Boolean)
           .join("\n");
-      
+
         const parts = value.split("\n");
         const name = parts[0] || "";
         const description = parts.slice(1).join("\n");
-      
+
         const cardEl = document.createElement("div");
         cardEl.classList.add("flip-card");
 
@@ -77,21 +75,20 @@
         cardEl.style.transform = `translateY(-40px) scale(0.95) rotate(${randomRotation}deg)`;
         cardEl.style.opacity = "0";
         cardEl.style.zIndex = "2";
-        cardEl.style.opacity = "0";
-      
+
         const inner = document.createElement("div");
         inner.classList.add("flip-inner");
-      
+
         const front = document.createElement("div");
         front.classList.add("card-front");
-      
+
         const img = document.createElement("img");
         img.src = cardData.image || "images/back.webp";
         front.appendChild(img);
-      
+
         const back = document.createElement("div");
         back.classList.add("card-back");
-      
+
         back.innerHTML = `
           <div class="card-title">${name}</div>
           <div class="card-text">${description}</div>
@@ -102,107 +99,27 @@
           e.stopPropagation();
           cardEl.remove();
         });
-  
+
         inner.appendChild(front);
         inner.appendChild(back);
         cardEl.appendChild(inner);
-      
+
         cardEl.addEventListener("click", () => {
           cardEl.classList.toggle("flipped");
         });
-      
-        wrapper.appendChild(cardEl);
-      
+
+        stack.appendChild(cardEl);
+
         requestAnimationFrame(() => {
           cardEl.style.transition = "transform 0.5s ease, opacity 0.4s ease";
           cardEl.style.opacity = "1";
           cardEl.style.transform = `translateY(0) scale(1) rotate(${randomRotation}deg)`;
         });
       }
+
       function drawRandomCard() {
         const index = Math.floor(Math.random() * remainingCards.length);
         return remainingCards.splice(index, 1)[0];
-      }
-      function drawOneCardAnimated(i) {
-        return new Promise((resolve) => {
-          const cardData = drawRandomCard();
-          const title = drawTitles[i];
-          const keys = drawTitles[i].keys;
-      
-          const value = keys
-            .map(k => cardData[k])
-            .filter(Boolean)
-            .join("\n");
-      
-          const parts = value.split("\n");
-          const name = parts[0] || "";
-          const description = parts.slice(1).join("\n");
-      
-          const wrapper = document.createElement("div");
-          wrapper.classList.add("card-wrapper");
-          
-          const titleEl = document.createElement("div");
-          titleEl.innerText = entry.title;
-          titleEl.classList.add("card-label");
-          titleEl.style.cursor = "pointer";
-          titleEl.addEventListener("click", () => drawCardAtIndex(i, wrapper));
-          
-          const stack = document.createElement("div");
-          stack.classList.add("card-stack");
-          
-          const placeholder = document.createElement("div");
-          placeholder.classList.add("card-placeholder");
-          placeholder.innerText = entry.description;
-          
-          stack.appendChild(placeholder);
-          wrapper.appendChild(titleEl);
-          wrapper.appendChild(stack);
-          resultContainer.appendChild(wrapper);
-      
-          const cardEl = document.createElement("div");
-          cardEl.classList.add("flip-card");
-      
-          const inner = document.createElement("div");
-          inner.classList.add("flip-inner");
-      
-          const front = document.createElement("div");
-          front.classList.add("card-front");
-      
-          const img = document.createElement("img");
-          img.src = cardData.image || "images/back.webp";
-      
-          front.appendChild(img);
-      
-          const back = document.createElement("div");
-          back.classList.add("card-back");
-      
-          back.innerHTML = `
-            <div class="card-title">${name}</div>
-            <div class="card-text">${description}</div>
-          `;
-      
-          inner.appendChild(front);
-          inner.appendChild(back);
-          cardEl.appendChild(inner);
-      
-          cardEl.addEventListener("click", () => {
-            cardEl.classList.toggle("flipped");
-          });
-      
-          wrapper.appendChild(titleEl);
-          wrapper.appendChild(cardEl);
-          resultContainer.appendChild(wrapper);
-  
-          // trigger animation
-          setTimeout(() => {
-            cardEl.classList.add("dealt");
-          }, 50);
-          
-          // delay next card like dealing
-          setTimeout(() => {
-            resolve();
-          }, 400);
-        });
       }
     </script>
   </body>
