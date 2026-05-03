@@ -91,7 +91,7 @@ body {
 }
 
 .card-back {
-  background: #444; url('images/back.webp') center / cover no-repeat;
+  background: #444 url('images/back.webp') center / cover no-repeat;
   color: white;
   transform: rotateY(180deg);
   padding: 16px;
