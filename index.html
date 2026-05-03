@@ -128,8 +128,12 @@
           cardEl.classList.toggle("flipped");
         });
       
+        const existing = wrapper.querySelector(".flip-card");
         const placeholder = wrapper.querySelector(".card-placeholder");
-        if (placeholder) {
+        
+        if (existing) {
+          existing.replaceWith(cardEl);
+        } else if (placeholder) {
           placeholder.replaceWith(cardEl);
         } else {
           wrapper.appendChild(cardEl);
