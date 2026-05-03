@@ -23,6 +23,7 @@
         resultContainer.innerHTML = "";
         drawTitles.forEach((entry, i) => {
           const wrapper = document.createElement("div");
+          wrapper.classList.add("card-wrapper");  // ← add this line
           wrapper.style.position = "relative";
           const titleEl = document.createElement("div");
           titleEl.innerText = entry.title;
@@ -95,16 +96,7 @@
           cardEl.classList.toggle("flipped");
         });
       
-        const existing = wrapper.querySelector(".flip-card");
-        const placeholder = wrapper.querySelector(".card-placeholder");
-        
-        if (existing) {
-          existing.replaceWith(cardEl);
-        } else if (placeholder) {
-          placeholder.replaceWith(cardEl);
-        } else {
-          wrapper.appendChild(cardEl);
-        }
+        wrapper.appendChild(cardEl);
       
         requestAnimationFrame(() => {
           cardEl.style.transition = "transform 0.5s ease, opacity 0.4s ease";
