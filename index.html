@@ -85,11 +85,6 @@ const titleDescriptions = {
   if (remainingCards.length === 0) {
     remainingCards = [...cards];
     alert("Deck reshuffled!");
-
-    // trigger animation
-    setTimeout(() => {
-      cardEl.classList.add("dealt");
-    }, 50);
   }
 
   const cardData = drawRandomCard();
@@ -139,9 +134,38 @@ const titleDescriptions = {
 
   wrapper.appendChild(cardEl);
 
-  setTimeout(() => {
-    cardEl.classList.add("dealt");
-  }, 50);
+// Get final position
+const rect = cardEl.getBoundingClientRect();
+
+// Define deck position (bottom center of screen)
+const deckX = window.innerWidth / 2;
+const deckY = window.innerHeight;
+
+// Calculate offset from deck → final position
+const offsetX = deckX - (rect.left + rect.width / 2);
+const offsetY = deckY - (rect.top + rect.height / 2);
+
+// Start card at deck position
+cardEl.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(0.8) rotate(${Math.random() * 40 - 20}deg)`;
+cardEl.style.opacity = "0";
+
+// Force layout so browser registers starting position
+cardEl.getBoundingClientRect();
+
+      const delay = i * 120;
+
+setTimeout(() => {
+  requestAnimationFrame(() => {
+    cardEl.style.transform = `translate(0, 0) scale(1) rotate(0deg)`;
+    cardEl.style.opacity = "1";
+  });
+}, delay);
+
+// Animate to final position
+requestAnimationFrame(() => {
+  cardEl.style.transform = `translate(0, 0) scale(1) rotate(0deg)`;
+  cardEl.style.opacity = "1";
+});
 }
     
     function drawRandomCard() {
