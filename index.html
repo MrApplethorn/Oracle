@@ -31,11 +31,11 @@
           titleEl.innerText = entry.title;
           titleEl.classList.add("card-label");
           titleEl.classList.add("pulsing");
+          titleEl.style.cursor = "pointer";
           titleEl.addEventListener("click", () => {
             titleEl.classList.remove("pulsing");
             drawCardAtIndex(i, stack);
           });
-          titleEl.style.cursor = "pointer";
 
           const stack = document.createElement("div");
           stack.classList.add("card-stack-area");
@@ -43,8 +43,6 @@
           const placeholder = document.createElement("div");
           placeholder.classList.add("card-placeholder");
           placeholder.innerText = entry.description;
-
-          titleEl.addEventListener("click", () => drawCardAtIndex(i, stack));
 
           stack.appendChild(placeholder);
           wrapper.appendChild(titleEl);
