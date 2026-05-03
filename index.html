@@ -30,6 +30,11 @@
           const titleEl = document.createElement("div");
           titleEl.innerText = entry.title;
           titleEl.classList.add("card-label");
+          titleEl.classList.add("pulsing");
+          titleEl.addEventListener("click", () => {
+            titleEl.classList.remove("pulsing");
+            drawCardAtIndex(i, stack);
+          });
           titleEl.style.cursor = "pointer";
 
           const stack = document.createElement("div");
