@@ -86,8 +86,6 @@ const titleDescriptions = {
     remainingCards = [...cards];
     alert("Deck reshuffled!");
 
-    wrapper.appendChild(cardEl);
-
     // trigger animation
     setTimeout(() => {
       cardEl.classList.add("dealt");
@@ -140,6 +138,10 @@ const titleDescriptions = {
   });
 
   wrapper.appendChild(cardEl);
+
+  setTimeout(() => {
+    cardEl.classList.add("dealt");
+  }, 50);
 }
     
     function drawRandomCard() {
@@ -163,9 +165,6 @@ const titleDescriptions = {
         const description = parts.slice(1).join("\n");
     
         const wrapper = document.createElement("div");
-        wrapper.style.display = "flex";
-        wrapper.style.flexDirection = "column";
-        wrapper.style.alignItems = "center";
     
         const titleEl = document.createElement("div");
         titleEl.innerText = title;
@@ -200,10 +199,6 @@ const titleDescriptions = {
         cardEl.addEventListener("click", () => {
           cardEl.classList.toggle("flipped");
         });
-    
-        wrapper.appendChild(titleEl);
-        wrapper.appendChild(cardEl);
-        resultContainer.appendChild(wrapper);
     
         wrapper.appendChild(titleEl);
         wrapper.appendChild(cardEl);
