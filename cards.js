@@ -1,3 +1,50 @@
+const drawTitles = [
+  {
+    title: "Party Gathers",
+    keys: ["name", "situation"],
+    description: "This card represents the situation the characters are in before the adventure starts."
+  },
+  {
+    title: "Adventure Begins",
+    keys: ["name", "person"],
+    description: "This card represents how the adventure starts. The situation that starts the action or an individual who gives the adventurers a quest"
+  },
+  {
+    title: "Journey",
+    keys: ["name", "place"],
+    description: "This card describes the transition from the introduction to the adventure location, something the characters encounter along the way."
+  },
+  {
+    title: "Entrance",
+    keys: ["name", "place"],
+    description: "This card describes the entrance to the adventure location."
+  },
+  {
+    title: "First Challenge",
+    keys: ["name", "creature"],
+    description: "These cards describe the primary challenges the characters must face in the adventure."
+  },
+  {
+    title: "Second Challenge",
+    keys: ["name", "creature"],
+    description: "These cards describe the primary challenges the characters must face in the adventure."
+  },
+  {
+    title: "Third Challenge",
+    keys: ["name", "creature"],
+    description: "These cards describe the primary challenges the characters must face in the adventure."
+  },
+  {
+    title: "Guardian",
+    keys: ["name", "creature"],
+    description: "This card describes the final obstacle the characters must overcome to achieve their goal and claim the Treasure."
+  },
+  {
+    title: "Treasure",
+    keys: ["name", "treasure"],
+    description: "This card describes a treasure that is the ultimate goal or reward of the adventure."
+  }
+];
 const cards = [
       {
         name: "Aberration",
