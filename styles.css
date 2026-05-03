@@ -188,3 +188,24 @@ body {
 
 .card-delete::before { left: -6px; }
 .card-delete::after  { right: -6px; }
+
+@media (max-width: 768px) {
+  #resultContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .card-placeholder,
+  .flip-card {
+    width: 340px;
+    height: 580px;
+  }
+
+  .card-stack-area {
+    width: 340px;
+    height: 580px;
+  }
+
+  .card-label {
+    font-size: 18px;
+  }
+}
