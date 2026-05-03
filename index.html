@@ -12,7 +12,6 @@
 </head>
 <body>
   <h1>Deck of Many Things</h1>
-  <button id="drawBtn">Draw Cards</button>
   <div id="resultContainer"></div>
   
   <script src="cards.js"></script>
@@ -45,24 +44,89 @@
     };
     
     const resultContainer = document.getElementById("resultContainer");
-    const button = document.getElementById("drawBtn");
-    
-    button.addEventListener("click", drawNineCards);
-    
-    async function drawNineCards() {
-      button.style.display = "none"; // 👈 hide button
-      
-      resultContainer.innerHTML = "";
-    
-      if (remainingCards.length < 9) {
-        remainingCards = [...cards];
-        alert("Not enough cards left. Reshuffling deck...");
-      }
-    
-      for (let i = 0; i < 9; i++) {
-        await drawOneCardAnimated(i);
-      }
-    }
+
+    function renderTitles() {
+  resultContainer.innerHTML = "";
+
+  drawTitles.forEach((title, i) => {
+    const wrapper = document.createElement("div");
+    wrapper.style.display = "flex";
+    wrapper.style.flexDirection = "column";
+    wrapper.style.alignItems = "center";
+
+    const titleEl = document.createElement("div");
+    titleEl.innerText = title;
+    titleEl.classList.add("card-label");
+
+    // Make title clickable (requirement 3 👇)
+    titleEl.style.cursor = "pointer";
+    titleEl.addEventListener("click", () => drawCardAtIndex(i, wrapper));
+
+    // Placeholder (requirement 2 👇)
+    const placeholder = document.createElement("div");
+    placeholder.classList.add("card-placeholder");
+    placeholder.innerText = "Click to reveal";
+
+    wrapper.appendChild(titleEl);
+    wrapper.appendChild(placeholder);
+    resultContainer.appendChild(wrapper);
+  });
+}
+    renderTitles();
+
+    function drawCardAtIndex(i, wrapper) {
+  if (remainingCards.length === 0) {
+    remainingCards = [...cards];
+    alert("Deck reshuffled!");
+  }
+
+  const cardData = drawRandomCard();
+  const title = drawTitles[i];
+  const keys = titleRules[title] || ["name"];
+
+  const value = keys
+    .map(k => cardData[k])
+    .filter(Boolean)
+    .join("\n");
+
+  const parts = value.split("\n");
+  const name = parts[0] || "";
+  const description = parts.slice(1).join("\n");
+
+  // Remove placeholder
+  wrapper.children[1].remove();
+
+  const cardEl = document.createElement("div");
+  cardEl.classList.add("flip-card");
+
+  const inner = document.createElement("div");
+  inner.classList.add("flip-inner");
+
+  const front = document.createElement("div");
+  front.classList.add("card-front");
+
+  const img = document.createElement("img");
+  img.src = cardData.image || "images/back.webp";
+  front.appendChild(img);
+
+  const back = document.createElement("div");
+  back.classList.add("card-back");
+
+  back.innerHTML = `
+    <div class="card-title">${name}</div>
+    <div class="card-text">${description}</div>
+  `;
+
+  inner.appendChild(front);
+  inner.appendChild(back);
+  cardEl.appendChild(inner);
+
+  cardEl.addEventListener("click", () => {
+    cardEl.classList.toggle("flipped");
+  });
+
+  wrapper.appendChild(cardEl);
+}
     
     function drawRandomCard() {
       const index = Math.floor(Math.random() * remainingCards.length);
