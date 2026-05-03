@@ -103,22 +103,6 @@ body {
   text-align: center;
 }
 
-.card-back::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 10px;
-  z-index: 0;
-}
-
-.card-back .card-title,
-.card-back .card-text,
-.card-back .card-delete {
-  position: relative;
-  z-index: 1;
-}
-
 .flip-card:hover {
   transform: scale(1.03);
 }
