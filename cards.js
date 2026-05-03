@@ -32,7 +32,7 @@ const drawTitles = [
   {
     title: "Third Challenge",
     keys: ["name", "creature"],
-    description: "These cards describe the tertiary challenges the characters must face in the adventure."
+    description: "These cards describe the tertiary challenge the characters must face in the adventure."
   },
   {
     title: "Guardian",
