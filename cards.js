@@ -22,17 +22,17 @@ const drawTitles = [
   {
     title: "First Challenge",
     keys: ["name", "creature"],
-    description: "These cards describe the primary challenges the characters must face in the adventure."
+    description: "These cards describe the primary challenge the characters must face in the adventure."
   },
   {
     title: "Second Challenge",
     keys: ["name", "creature"],
-    description: "These cards describe the primary challenges the characters must face in the adventure."
+    description: "These cards describe the secondary challenge the characters must face in the adventure."
   },
   {
     title: "Third Challenge",
     keys: ["name", "creature"],
-    description: "These cards describe the primary challenges the characters must face in the adventure."
+    description: "These cards describe the tertiary challenges the characters must face in the adventure."
   },
   {
     title: "Guardian",
