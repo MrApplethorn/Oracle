@@ -130,3 +130,10 @@ body {
       width: 260px;
       height: 450px;
 }
+.card-wrapper {
+  display: grid;
+}
+.card-wrapper > * {
+  grid-column: 1;
+  grid-row: 1;
+}
