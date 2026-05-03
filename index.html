@@ -20,31 +20,31 @@
       let remainingCards = [...cards];
       const resultContainer = document.getElementById("resultContainer");
       function renderTitles() {
-  resultContainer.innerHTML = "";
-  drawTitles.forEach((entry, i) => {
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("card-wrapper");
-
-    const titleEl = document.createElement("div");
-    titleEl.innerText = entry.title;
-    titleEl.classList.add("card-label");
-    titleEl.style.cursor = "pointer";
-
-    const stack = document.createElement("div");
-    stack.classList.add("card-stack-area");
-
-    const placeholder = document.createElement("div");
-    placeholder.classList.add("card-placeholder");
-    placeholder.innerText = entry.description;
-
-    titleEl.addEventListener("click", () => drawCardAtIndex(i, stack));
-
-    stack.appendChild(placeholder);
-    wrapper.appendChild(titleEl);
-    wrapper.appendChild(stack);
-    resultContainer.appendChild(wrapper);
-  });
-}
+        resultContainer.innerHTML = "";
+        drawTitles.forEach((entry, i) => {
+          const wrapper = document.createElement("div");
+          wrapper.classList.add("card-wrapper");
+      
+          const titleEl = document.createElement("div");
+          titleEl.innerText = entry.title;
+          titleEl.classList.add("card-label");
+          titleEl.style.cursor = "pointer";
+      
+          const stack = document.createElement("div");
+          stack.classList.add("card-stack-area");
+      
+          const placeholder = document.createElement("div");
+          placeholder.classList.add("card-placeholder");
+          placeholder.innerText = entry.description;
+      
+          titleEl.addEventListener("click", () => drawCardAtIndex(i, stack));
+      
+          stack.appendChild(placeholder);
+          wrapper.appendChild(titleEl);
+          wrapper.appendChild(stack);
+          resultContainer.appendChild(wrapper);
+        });
+      }
       renderTitles();
   
       function drawCardAtIndex(i, wrapper) {
@@ -93,7 +93,13 @@
         back.innerHTML = `
           <div class="card-title">${name}</div>
           <div class="card-text">${description}</div>
+          <div class="card-delete">X</div>
         `;
+
+        back.querySelector(".card-delete").addEventListener("click", (e) => {
+          e.stopPropagation();
+          cardEl.remove();
+        });
   
         inner.appendChild(front);
         inner.appendChild(back);
