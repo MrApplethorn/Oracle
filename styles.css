@@ -133,14 +133,23 @@ body {
   align-items: center;
   margin-bottom: 2rem;
 }
+
+.card-wrapper .card-label {
+  flex-shrink: 0;
+  margin-bottom: 12px;
+  z-index: 10;
+}
+
 .card-wrapper .card-placeholder,
 .card-wrapper .flip-card {
   position: absolute;
   top: 0;
   left: 0;
 }
-.card-stack {
+
+.card-stack-area {
   position: relative;
   width: 260px;
   height: 450px;
+  flex-shrink: 0;
 }
