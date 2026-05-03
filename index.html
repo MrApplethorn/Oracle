@@ -74,7 +74,7 @@ const titleDescriptions = {
     titleEl.addEventListener("click", () => drawCardAtIndex(i, wrapper));
 
     const placeholder = document.createElement("div");
-    placeholder.classList.add("card-placeholder");
+    placeholder.classList.add("card-placeholder centered");
     placeholder.innerText = titleDescriptions[title] || "Unknown event";
 
     wrapper.appendChild(titleEl);
@@ -120,7 +120,7 @@ const titleDescriptions = {
   front.appendChild(img);
 
   const back = document.createElement("div");
-  back.classList.add("card-back");
+  back.classList.add("card-back centered");
 
   back.innerHTML = `
     <div class="card-title">${name}</div>
@@ -182,7 +182,7 @@ const titleDescriptions = {
         front.appendChild(img);
     
         const back = document.createElement("div");
-        back.classList.add("card-back");
+        back.classList.add("card-back centered");
     
         back.innerHTML = `
           <div class="card-title">${name}</div>
