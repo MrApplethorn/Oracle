@@ -128,7 +128,12 @@
           cardEl.classList.toggle("flipped");
         });
       
-        wrapper.appendChild(cardEl);
+        const placeholder = wrapper.querySelector(".card-placeholder");
+        if (placeholder) {
+          placeholder.replaceWith(cardEl);
+        } else {
+          wrapper.appendChild(cardEl);
+        }
       
         requestAnimationFrame(() => {
           cardEl.style.transition = "transform 0.5s ease, opacity 0.4s ease";
