@@ -1,220 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Deck of Many Things</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>Deck of Many Things</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Deck of Many Things</h1>
+    <div id="resultContainer"></div>
+    
+    <script src="cards.js"></script>
+    
+    <script>
+      let remainingCards = [...cards];
+      const drawTitles = [
+        "Party Gathers",
+        "Adventure Begins",
+        "Journey",
+        "Entrance",
+        "First Challenge",
+        "Second Challenge",
+        "Third Challenge",
+        "Guardian",
+        "Treasure"
+      ];
+      const titleRules = {
+        "Party Gathers": ["name", "situation"],
+        "Adventure Begins": ["name", "person"],
+        "Journey": ["name", "place"],
+        "Entrance": ["name", "place"],
+        "First Challenge": ["name", "creature"],
+        "Second Challenge": ["name", "creature"],
+        "Third Challenge": ["name", "creature"],
+        "Guardian": ["name", "creature"],
+        "Treasure": ["name", "treasure"]
+      };
+      const titleDescriptions = {
+        "Party Gathers": "This card represents the situation the characters are in before the adventure starts.",
+        "Adventure Begins": "This card represents how the adventure starts. The situation that starts the action or an individual who gives the adventurers a quest",
+        "Journey": "This card describes the transition from the introduction to the adventure location, something the characters encounter along the way.",
+        "Entrance": "This card describes the entrance to the adventure location.",
+        "First Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
+        "Second Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
+        "Third Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
+        "Guardian": "This card describes the final obstacle the characters must overcome to achieve their goal and claim the Treasure.",
+        "Treasure": "This card describes a treasure that is the ultimate goal or reward of the adventure."
+      };
+      const resultContainer = document.getElementById("resultContainer");
+      function renderTitles() {
+        resultContainer.innerHTML = "";
+        drawTitles.forEach((title, i) => {
+          const wrapper = document.createElement("div");
+          wrapper.style.position = "relative";
+          const titleEl = document.createElement("div");
+          titleEl.innerText = title;
+          titleEl.classList.add("card-label");
+          titleEl.style.cursor = "pointer";
+          titleEl.addEventListener("click", () => drawCardAtIndex(i, wrapper));
+          const placeholder = document.createElement("div");
+          placeholder.classList.add("card-placeholder");
+          placeholder.innerText = titleDescriptions[title] || "Unknown event";
+          placeholder.style.position = "relative";
+          placeholder.style.zIndex = "1";
+      
+          wrapper.appendChild(titleEl);
+          wrapper.appendChild(placeholder);
+          resultContainer.appendChild(wrapper);
+        });
+      }
+      renderTitles();
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
+      function drawCardAtIndex(i, wrapper) {
+        if (remainingCards.length === 0) {
+          remainingCards = [...cards];
+          alert("Deck reshuffled!");
+        }
   
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>Deck of Many Things</h1>
-  <div id="resultContainer"></div>
-  
-  <script src="cards.js"></script>
-  
-  <script>
-    let remainingCards = [...cards];
-    
-const drawTitles = [
-  "Party Gathers",
-  "Adventure Begins",
-  "Journey",
-  "Entrance",
-  "First Challenge",
-  "Second Challenge",
-  "Third Challenge",
-  "Guardian",
-  "Treasure"
-];
-    
-const titleRules = {
-  "Party Gathers": ["name", "situation"],
-  "Adventure Begins": ["name", "person"],
-  "Journey": ["name", "place"],
-  "Entrance": ["name", "place"],
-  "First Challenge": ["name", "creature"],
-  "Second Challenge": ["name", "creature"],
-  "Third Challenge": ["name", "creature"],
-  "Guardian": ["name", "creature"],
-  "Treasure": ["name", "treasure"]
-};
-
-const titleDescriptions = {
-  "Party Gathers": "This card represents the situation the characters are in before the adventure starts.",
-  "Adventure Begins": "This card represents how the adventure starts. The situation that starts the action or an individual who gives the adventurers a quest",
-  "Journey": "This card describes the transition from the introduction to the adventure location, something the characters encounter along the way.",
-  "Entrance": "This card describes the entrance to the adventure location.",
-  "First Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
-  "Second Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
-  "Third Challenge": "These cards describe the primary challenges the characters must face in the adventure.",
-  "Guardian": "This card describes the final obstacle the characters must overcome to achieve their goal and claim the Treasure.",
-  "Treasure": "This card describes a treasure that is the ultimate goal or reward of the adventure."
-};
-    
-    const resultContainer = document.getElementById("resultContainer");
-
-    function renderTitles() {
-  resultContainer.innerHTML = "";
-
-  drawTitles.forEach((title, i) => {
-    const wrapper = document.createElement("div");
-
-    const titleEl = document.createElement("div");
-    titleEl.innerText = title;
-    titleEl.classList.add("card-label");
-
-    titleEl.style.cursor = "pointer";
-    titleEl.addEventListener("click", () => drawCardAtIndex(i, wrapper));
-
-    const placeholder = document.createElement("div");
-    placeholder.classList.add("card-placeholder");
-    placeholder.innerText = titleDescriptions[title] || "Unknown event";
-
-    wrapper.appendChild(titleEl);
-    wrapper.appendChild(placeholder);
-    resultContainer.appendChild(wrapper);
-  });
-}
-    renderTitles();
-
-    function drawCardAtIndex(i, wrapper) {
-  if (remainingCards.length === 0) {
-    remainingCards = [...cards];
-    alert("Deck reshuffled!");
-  }
-
-  const cardData = drawRandomCard();
-  const title = drawTitles[i];
-  const keys = titleRules[title] || ["name"];
-
-  const value = keys
-    .map(k => cardData[k])
-    .filter(Boolean)
-    .join("\n");
-
-  const parts = value.split("\n");
-  const name = parts[0] || "";
-  const description = parts.slice(1).join("\n");
-
-  // Remove placeholder
-  wrapper.children[1].remove();
-
-  const cardEl = document.createElement("div");
-  cardEl.classList.add("flip-card");
-
-  const inner = document.createElement("div");
-  inner.classList.add("flip-inner");
-
-  const front = document.createElement("div");
-  front.classList.add("card-front");
-
-  const img = document.createElement("img");
-  img.src = cardData.image || "images/back.webp";
-  front.appendChild(img);
-
-  const back = document.createElement("div");
-  back.classList.add("card-back");
-
-  back.innerHTML = `
-    <div class="card-title">${name}</div>
-    <div class="card-text">${description}</div>
-  `;
-
-  inner.appendChild(front);
-  inner.appendChild(back);
-  cardEl.appendChild(inner);
-
-  cardEl.addEventListener("click", () => {
-    cardEl.classList.toggle("flipped");
-  });
-
-  wrapper.appendChild(cardEl);
-
-cardEl.style.opacity = "0";
-cardEl.style.transform = "translateY(-40px) scale(0.95) rotate(-3deg)";
-
-requestAnimationFrame(() => {
-  cardEl.style.transition = "transform 0.5s ease, opacity 0.4s ease";
-  cardEl.style.opacity = "1";
-  cardEl.style.transform = "translateY(0) scale(1) rotate(0deg)";
-});
-}
-    
-    function drawRandomCard() {
-      const index = Math.floor(Math.random() * remainingCards.length);
-      return remainingCards.splice(index, 1)[0];
-    }
-    
-    function drawOneCardAnimated(i) {
-      return new Promise((resolve) => {
         const cardData = drawRandomCard();
         const title = drawTitles[i];
         const keys = titleRules[title] || ["name"];
-    
+      
         const value = keys
           .map(k => cardData[k])
           .filter(Boolean)
           .join("\n");
-    
+      
         const parts = value.split("\n");
         const name = parts[0] || "";
         const description = parts.slice(1).join("\n");
-    
-        const wrapper = document.createElement("div");
-    
-        const titleEl = document.createElement("div");
-        titleEl.innerText = title;
-        titleEl.classList.add("card-label");
-    
+      
         const cardEl = document.createElement("div");
         cardEl.classList.add("flip-card");
-    
+
+        const randomRotation = Math.random() * 20 - 10; // -10° to +10°
+
+        cardEl.style.position = "absolute";
+        cardEl.style.top = "0";
+        cardEl.style.left = "0";
+        cardEl.style.width = "100%";
+        cardEl.style.zIndex = "2";
+        cardEl.style.opacity = "0";
+        cardEl.style.transform = `translateY(-40px) scale(0.95) rotate(${randomRotation}deg)`;
+      
         const inner = document.createElement("div");
         inner.classList.add("flip-inner");
-    
+      
         const front = document.createElement("div");
         front.classList.add("card-front");
-    
+      
         const img = document.createElement("img");
         img.src = cardData.image || "images/back.webp";
-    
         front.appendChild(img);
-    
+      
         const back = document.createElement("div");
         back.classList.add("card-back");
-    
+      
         back.innerHTML = `
           <div class="card-title">${name}</div>
           <div class="card-text">${description}</div>
         `;
-    
+  
         inner.appendChild(front);
         inner.appendChild(back);
         cardEl.appendChild(inner);
-    
+      
         cardEl.addEventListener("click", () => {
           cardEl.classList.toggle("flipped");
         });
-    
-        wrapper.appendChild(titleEl);
+      
         wrapper.appendChild(cardEl);
-        resultContainer.appendChild(wrapper);
-
-        // trigger animation
-        setTimeout(() => {
-          cardEl.classList.add("dealt");
-        }, 50);
-        
-        // delay next card like dealing
-        setTimeout(() => {
-          resolve();
-        }, 400);
-      });
-    }
-  </script>
-</body>
+      
+      requestAnimationFrame(() => {
+  cardEl.style.transition = "transform 0.5s ease, opacity 0.4s ease";
+  cardEl.style.opacity = "1";
+  cardEl.style.transform = `translateY(0) scale(1) rotate(${randomRotation}deg)`;
+});
+      }
+      
+      function drawRandomCard() {
+        const index = Math.floor(Math.random() * remainingCards.length);
+        return remainingCards.splice(index, 1)[0];
+      }
+      
+      function drawOneCardAnimated(i) {
+        return new Promise((resolve) => {
+          const cardData = drawRandomCard();
+          const title = drawTitles[i];
+          const keys = titleRules[title] || ["name"];
+      
+          const value = keys
+            .map(k => cardData[k])
+            .filter(Boolean)
+            .join("\n");
+      
+          const parts = value.split("\n");
+          const name = parts[0] || "";
+          const description = parts.slice(1).join("\n");
+      
+          const wrapper = document.createElement("div");
+      
+          const titleEl = document.createElement("div");
+          titleEl.innerText = title;
+          titleEl.classList.add("card-label");
+      
+          const cardEl = document.createElement("div");
+          cardEl.classList.add("flip-card");
+      
+          const inner = document.createElement("div");
+          inner.classList.add("flip-inner");
+      
+          const front = document.createElement("div");
+          front.classList.add("card-front");
+      
+          const img = document.createElement("img");
+          img.src = cardData.image || "images/back.webp";
+      
+          front.appendChild(img);
+      
+          const back = document.createElement("div");
+          back.classList.add("card-back");
+      
+          back.innerHTML = `
+            <div class="card-title">${name}</div>
+            <div class="card-text">${description}</div>
+          `;
+      
+          inner.appendChild(front);
+          inner.appendChild(back);
+          cardEl.appendChild(inner);
+      
+          cardEl.addEventListener("click", () => {
+            cardEl.classList.toggle("flipped");
+          });
+      
+          wrapper.appendChild(titleEl);
+          wrapper.appendChild(cardEl);
+          resultContainer.appendChild(wrapper);
+  
+          // trigger animation
+          setTimeout(() => {
+            cardEl.classList.add("dealt");
+          }, 50);
+          
+          // delay next card like dealing
+          setTimeout(() => {
+            resolve();
+          }, 400);
+        });
+      }
+    </script>
+  </body>
 </html>
