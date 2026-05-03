@@ -94,7 +94,7 @@ body {
   background: #444 url('images/back.webp') center / cover no-repeat;
   color: white;
   transform: rotateY(180deg);
-  padding: 16px;
+  padding: 30px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -167,24 +167,15 @@ body {
   z-index: 10;
 }
 
-/*.card-delete::before,
-.card-delete::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  background: #c0392b;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.card-delete::before { left: -6px; }
-.card-delete::after  { right: -6px; }*/
-
 @media (max-width: 768px) {
   #resultContainer {
     grid-template-columns: 1fr;
     justify-items: center;
+  }
+
+  .card-wrapper {
+    width: 80vw;
+    align-items: center;
   }
 
   .card-stack-area {
