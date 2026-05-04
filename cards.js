@@ -1,42 +1,42 @@
 const drawTitles = [
   {
     title: "Party Gathers",
-    keys: ["name", "situation"],
+    keys: ["name", "situation", "place"],
     description: "The situation the characters are in before the adventure starts."
   },
   {
     title: "Adventure Begins",
-    keys: ["name", "person"],
+    keys: ["name", "person", "creature"],
     description: "How the adventure starts. The situation that starts the action or an individual who gives the adventurers a quest"
   },
   {
     title: "Journey",
-    keys: ["name", "place"],
+    keys: ["name", "situation", "place"],
     description: "The transition from the introduction to the adventure location, something the characters encounter along the way."
   },
   {
     title: "Entrance",
-    keys: ["name", "place"],
+    keys: ["name", "situation", "place"],
     description: "The entrance to the adventure location."
   },
   {
     title: "First Challenge",
-    keys: ["name", "creature"],
+    keys: ["name", "person", "creature"],
     description: "The primary challenge the characters must face in the adventure. It is not uncommon for the person described in Adventure Begins to become a challenge later on in the story."
   },
   {
     title: "Second Challenge",
-    keys: ["name", "creature"],
+    keys: ["name", "person", "creature"],
     description: "The secondary challenge the characters must face in the adventure. It is not uncommon for the person described in Adventure Begins to become a challenge later on in the story."
   },
   {
     title: "Third Challenge",
-    keys: ["name", "creature"],
-    description: "The tertiary challenge the characters must face in the adventure. It is not uncommon for the person described in the Adventure Begins to become a challenge later on in the story."
+    keys: ["name", "person", "creature"],
+    description: "The tertiary challenge the characters must face in the adventure. It is not uncommon for the person described in Adventure Begins to become a challenge later on in the story."
   },
   {
     title: "Guardian",
-    keys: ["name", "creature"],
+    keys: ["name", "person", "creature"],
     description: "The final obstacle the characters must overcome to achieve their goal and claim the Treasure. This might also be a previous challenge recurring in their ultimate form."
   },
   {
@@ -184,7 +184,7 @@ const cards = [
       {
         name: "Celestial Reversed",
         person: "Someone who carries a grudge over a real or perceived injury caused by a god or Celestial." ,
-        creature: "A fallen Celestial or similar creature that has lost its connection to the divine,",
+        creature: "A fallen Celestial or similar creature that has lost its connection to the divine.",
         place: "A place intended to ward off Celestials and influence from the Upper Planes.",
         treasure: "A treasure depicting a Celestial's fall, or a magic item useful against Celestials.",
         situation: "A situation involving Celestials' unwelcome interference in mortal affairs.",
@@ -202,7 +202,7 @@ const cards = [
       {
         name: "Comet Reversed",
         person: "A person who is grieving or delights in the suffering of others." ,
-        creature: "The destruction left in the wake ofa rampaging creature, or smaller creatures fleeing from a larger one.",
+        creature: "The destruction left in the wake of a rampaging creature, or smaller creatures fleeing from a larger one.",
         place: "A ruin where a terrible event occurred in the past and that might now be haunted.",
         treasure: "A treasure formed or shaped by disaster, bloodstained or haunted by former owners: alternatively, something good arising from a bad situation.",
         situation: "The calm after a devastating storm: a situation where people are reeling from awful news or events.",
@@ -1068,7 +1068,7 @@ const cards = [
         {
           name: "Sage Reversed",
           person: "Someone who helpfully offers bad advice.",
-          creature: "sA creature that tries to lead the way into danger or a trap.",
+          creature: "A creature that tries to lead the way into danger or a trap.",
           place: "A place whose structural flaws threaten its integrity.",
           treasure: "A device valuable for its components that doesn't function as intended, or a sentient magic item that provides bad but well-intentioned advice.",
           situation: "An opportunity to provide advice on a completely unfamiliar subject.",
@@ -1078,7 +1078,7 @@ const cards = [
           name: "Shield Reversed",
           person: "A guarded person who carefully shields themself from physical or emotional harm.",
           creature: "A heavily armored creature.",
-          place: "sA hermitage or retreat meant to isolate one person from others.",
+          place: "A hermitage or retreat meant to isolate one person from others.",
           treasure: "A suit of armor that is valuable or magical.",
           situation: "A situation arising from someone selfishly protecting themself without heed to others.",
           image: "images/shield reversed.webp"
@@ -1177,7 +1177,7 @@ const cards = [
           name: "Throne Reversed",
           person: "A person who resents authority imposed on them.",
           creature: "A creature that unwillingly serves another.",
-          place: "A place at the edge of a ruler's authority or son the border between rival nations.",
+          place: "A place at the edge of a ruler's authority or on the border between rival nations.",
           treasure: "Treasure. An art object created as an act of resistance to tyranny, or a magic item that protects against restraint (such as a Ring of Free Action).",
           situation: "A group of people rebelling against a ruler or an authority figure.",
           image: "images/throne reversed.webp"
