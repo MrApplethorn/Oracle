@@ -1,48 +1,48 @@
 const drawTitles = [
   {
     title: "Party Gathers",
-    keys: ["name", "situation", "place"],
+    keys: ["name", "place", "situation"],
     description: "The situation the characters are in before the adventure starts."
   },
   {
     title: "Adventure Begins",
-    keys: ["name", "person", "creature"],
+    keys: ["name", "person", "situation"],
     description: "How the adventure starts. The situation that starts the action or an individual who gives the adventurers a quest"
   },
   {
     title: "Journey",
-    keys: ["name", "situation", "place"],
+    keys: ["name", "place", "situation"],
     description: "The transition from the introduction to the adventure location, something the characters encounter along the way."
   },
   {
     title: "Entrance",
-    keys: ["name", "situation", "place"],
+    keys: ["name", "place", "situation"],
     description: "The entrance to the adventure location."
   },
   {
     title: "First Challenge",
     keys: ["name", "person", "creature"],
-    description: "The primary challenge the characters must face in the adventure. It is not uncommon for the person described in Adventure Begins to become a challenge later on in the story."
+    description: "The primary challenge the characters must face in the adventure."
   },
   {
     title: "Second Challenge",
     keys: ["name", "person", "creature"],
-    description: "The secondary challenge the characters must face in the adventure. It is not uncommon for the person described in Adventure Begins to become a challenge later on in the story."
+    description: "The secondary challenge the characters must face in the adventure."
   },
   {
     title: "Third Challenge",
     keys: ["name", "person", "creature"],
-    description: "The tertiary challenge the characters must face in the adventure. It is not uncommon for the person described in Adventure Begins to become a challenge later on in the story."
+    description: "The tertiary challenge the characters must face in the adventure."
   },
   {
     title: "Guardian",
     keys: ["name", "person", "creature"],
-    description: "The final obstacle the characters must overcome to achieve their goal and claim the Treasure. This might also be a previous challenge recurring in their ultimate form."
+    description: "The final obstacle the characters must overcome to achieve their goal and claim the Treasure."
   },
   {
     title: "Treasure",
-    keys: ["name", "treasure"],
-    description: "A treasure that is the ultimate goal or reward of the adventure. If it offers any benefits it is likely to be used by the Guardian in the final confrontation with the characters."
+    keys: ["name", "treasure", "situation"],
+    description: "A treasure that is the ultimate goal or reward of the adventure."
   }
 ];
 const cards = [
