@@ -64,7 +64,7 @@
         const value = keys
           .map(k => cardData[k])
           .filter(Boolean)
-          .join("\n\nor\n\n");
+          .join("\n");
 
         const parts = value.split("\n");
         const name = parts[0] || "";
