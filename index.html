@@ -68,7 +68,7 @@
 
         const parts = value.split("\n");
         const name = parts[0] || "";
-        const description = parts.slice(1).join("\n");
+        const description = parts.slice(1).join("\n\nor\n\n");
 
         const cardEl = document.createElement("div");
         cardEl.classList.add("flip-card");
