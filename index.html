@@ -119,6 +119,10 @@
           cardEl.style.opacity = "1";
           cardEl.style.transform = `translateY(0) scale(1) rotate(${randomRotation}deg)`;
         });
+        
+        setTimeout(() => {
+          cardEl.classList.add("flipped");
+        }, 1000);
       }
 
       function drawRandomCard() {
