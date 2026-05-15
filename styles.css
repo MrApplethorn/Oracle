@@ -12,16 +12,19 @@ body {
   max-width: 900px;
   text-align: center;
   margin: 0 auto;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .intro-text {
@@ -55,6 +58,7 @@ button#generateButton {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 1rem;
 }
 
 button#generateButton:active {
@@ -75,6 +79,7 @@ button#generateButton:disabled {
   gap: 12px;
   justify-content: center;
   margin: 1rem 0;
+  flex-wrap: wrap;
 }
 
 .link {
@@ -82,7 +87,8 @@ button#generateButton:disabled {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
+  flex: 0 1 auto;
+  min-width: 140px;
   max-width: 180px;
   padding: 10px 14px;
   font-size: 1rem;
@@ -111,6 +117,7 @@ button#generateButton:disabled {
   gap: 12px;
   justify-content: center;
   margin: 2rem 0;
+  width: 100%;
 }
 
 .reels:first-of-type {
@@ -133,6 +140,7 @@ button#generateButton:disabled {
 }
 
 .reel-outer.wide {
+  grid-column: 1 / -1;
   width: 100%;
   margin-top: 0;
 }
@@ -504,8 +512,8 @@ button#generateButton:disabled {
 }
 
 @media (max-width: 768px) {
-  body {
-    padding: 20px;
+  .container {
+    padding: 10px;
   }
 
   .card-wrapper {
