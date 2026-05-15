@@ -1,11 +1,311 @@
+/* ===== GLOBAL STYLES ===== */
 body {
   font-family: 'Germania One', sans-serif;
-  text-align: center;
-  padding: 50px;
-  background: #27272a;
-  color: white;
+  background-color: #27272a;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
+.container {
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro-text {
+  max-width: 680px;
+  margin: -0.35rem auto 1.5rem;
+  color: #d4d4d8;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.section-divider {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #52525b;
+  margin: 1.5rem 0 2rem;
+}
+
+/* ===== BUTTONS & LINKS ===== */
+button {
+  font-family: 'Germania One', sans-serif;
+}
+
+button#generateButton {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-family: 'Germania One', sans-serif;
+  border-radius: 10px;
+  border: none;
+  background-color: #e40712;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button#generateButton:active {
+  transform: scale(0.98);
+}
+
+button#generateButton:hover {
+  background-color: #232b2f;
+}
+
+button#generateButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.link-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  max-width: 180px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: 'Germania One', sans-serif;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.link:hover {
+  background-color: #18181b;
+}
+
+.link:active {
+  transform: scale(0.98);
+}
+
+/* ===== WIDOWMAKER & TOWNCRIER: REEL STYLES ===== */
+.reels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.reels:first-of-type {
+  margin-bottom: 2rem;
+}
+
+.reels:last-of-type {
+  margin-top: 2rem;
+}
+
+.reel-outer {
+  background: #18181b;
+  border: 2px solid #52525b;
+  border-radius: 10px;
+  height: 80px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.reel-outer.wide {
+  width: 100%;
+  margin-top: 0;
+}
+
+.reel-outer::before,
+.reel-outer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 22px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reel-outer::before {
+  top: 0;
+  background: linear-gradient(to bottom, #18181b, transparent);
+}
+
+.reel-outer::after {
+  bottom: 0;
+  background: linear-gradient(to top, #18181b, transparent);
+}
+
+.reel-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.reel-item {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 1.2rem;
+  color: #fff;
+  padding: 0 8px;
+  text-align: center;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.separator {
+  color: #a1a1aa;
+}
+
+.reel-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reel-label {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #a1a1aa;
+  text-transform: uppercase;
+}
+
+/* ===== WIDOWMAKER: INFO BUTTON & DESCRIPTION PANEL ===== */
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  font-size: 0.75rem;
+  font-family: 'Germania One', sans-serif;
+  border-radius: 50%;
+  border: none;
+  background-color: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.info-btn:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.1);
+}
+
+.info-btn:active {
+  transform: scale(0.95);
+}
+
+.description-panel {
+  position: relative;
+  z-index: 1;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: -2px;
+  padding: 0 16px;
+  border: 2px solid transparent;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  transform: translateY(-12px);
+  transform-origin: top;
+  transition: max-height 240ms ease, opacity 180ms ease, padding 180ms ease, border-color 180ms ease, transform 240ms ease;
+}
+
+.description-panel.active {
+  max-height: 420px;
+  opacity: 1;
+  padding: 12px 16px;
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+  text-align: left;
+  transform: translateY(0);
+}
+
+.reel-wrapper:has(.description-panel.active) .reel-outer {
+  border-bottom-color: #2563eb;
+  border-radius: 10px 10px 0 0;
+}
+
+.description-panel strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.description-panel p {
+  margin: 0;
+}
+
+.description-panel hr {
+  border: 0;
+  border-top: 1px solid #fff;
+  opacity: 0.25;
+  margin: 10px 0;
+}
+
+/* ===== TOWNCRIER: REEL OVERLAY ===== */
+.reel-details-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(24, 24, 27, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.reel-details-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#race-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+  color: #fff;
+}
+
+/* ===== ORACLE: CARD STYLES ===== */
 #resultContainer {
   margin-top: 30px;
   display: grid;
@@ -136,8 +436,13 @@ body {
   transform: translateY(-50%) rotate(45deg);
 }
 
-.card-label::before { left: -6px; }
-.card-label::after  { right: -6px; }
+.card-label::before { 
+  left: -6px; 
+}
+
+.card-label::after { 
+  right: -6px; 
+}
 
 .card-title {
   font-size: 18px;
@@ -169,20 +474,35 @@ body {
 }
 
 @keyframes pulse-border {
-  0%   { box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 0 rgba(37, 99, 235, 0.6); }
-  70%  { box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 10px rgba(37, 99, 235, 0); }
-  100% { box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 0 rgba(37, 99, 235, 0); }
+  0% { 
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 0 rgba(37, 99, 235, 0.6); 
+  }
+  70% { 
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 10px rgba(37, 99, 235, 0); 
+  }
+  100% { 
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 0 rgba(37, 99, 235, 0); 
+  }
 }
 
 .card-label.pulsing {
   animation: pulse-border 1.5s ease-out infinite;
 }
 
+/* ===== RESPONSIVE DESIGN ===== */
+@media (min-width: 600px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .reel-item {
+    font-size: 1.4rem;
+  }
+}
+
 @media (max-width: 768px) {
   body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px;
   }
 
   .card-wrapper {
@@ -200,45 +520,4 @@ body {
     width: 80vw;
     height: calc(80vw * 1.73);
   }
-}
-
-.link-buttons {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-.link {
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  max-width: 180px;
-  padding: 10px 14px;
-  font-size: 1rem;
-  font-family: 'Germania One', sans-serif;
-  border-radius: 10px;
-  border: 2px solid #fff;
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-}
-
-.link:hover {
-  background-color: #18181b;
-}
-
-.link:active {
-  transform: scale(0.98);
-}
-
-.section-divider {
-  width: 100%;
-  border: 0;
-  border-top: 1px solid #52525b;
-  margin: 1.5rem 0 2rem;
 }
