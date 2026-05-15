@@ -2,7 +2,7 @@ body {
   font-family: 'Germania One', sans-serif;
   text-align: center;
   padding: 50px;
-  background: #1e1e2f;
+  background: #27272a;
   color: white;
 }
 
@@ -42,7 +42,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px dashed #aaa;
+  border: 2px dashed #52525b;
   text-align: center;
   padding: 10px;
   box-sizing: border-box;
@@ -92,7 +92,7 @@ body {
 }
 
 .card-back {
-  background: #444 url('images/back.webp') center / cover no-repeat;
+  background: #18181b url('images/back.webp') center / cover no-repeat;
   color: white;
   transform: rotateY(180deg);
   padding: 30px;
@@ -113,12 +113,12 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 12px;
-  border: 2px solid #c9a44c;
+  border: 2px solid #2563eb;
   border-radius: 6px;
-  background: linear-gradient(145deg, #2a2a3d, #1a1a2a);
-  color: #f5e6b3;
+  background: linear-gradient(145deg, #27272a, #18181b);
+  color: #fff;
   box-shadow: 
-    0 0 8px rgba(201, 164, 76, 0.4),
+    0 0 8px rgba(37, 99, 235, 0.4),
     inset 0 0 6px rgba(0,0,0,0.6);
   display: inline-block;
   position: relative;
@@ -132,7 +132,7 @@ body {
   top: 50%;
   width: 10px;
   height: 10px;
-  background: #c9a44c;
+  background: #2563eb;
   transform: translateY(-50%) rotate(45deg);
 }
 
@@ -152,12 +152,12 @@ body {
 .card-delete {
   font-size: 16px;
   letter-spacing: 1px;
-  border: 2px solid #c0392b;
+  border: 2px solid #e40712;
   border-radius: 6px;
-  background: linear-gradient(145deg, #2a1a1a, #1a0a0a);
-  color: #f5b3b3;
+  background: linear-gradient(145deg, #27272a, #18181b);
+  color: #fff;
   box-shadow:
-    0 0 8px rgba(192, 57, 43, 0.4),
+    0 0 8px rgba(228, 7, 18, 0.4),
     inset 0 0 6px rgba(0,0,0,0.6);
   display: inline-block;
   position: absolute;
@@ -169,9 +169,9 @@ body {
 }
 
 @keyframes pulse-border {
-  0%   { box-shadow: 0 0 8px rgba(201, 164, 76, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 0 rgba(201, 164, 76, 0.6); }
-  70%  { box-shadow: 0 0 8px rgba(201, 164, 76, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 10px rgba(201, 164, 76, 0); }
-  100% { box-shadow: 0 0 8px rgba(201, 164, 76, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 0 rgba(201, 164, 76, 0); }
+  0%   { box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 0 rgba(37, 99, 235, 0.6); }
+  70%  { box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 10px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 8px rgba(37, 99, 235, 0.4), inset 0 0 6px rgba(0,0,0,0.6), 0 0 0 0 rgba(37, 99, 235, 0); }
 }
 
 .card-label.pulsing {
@@ -201,43 +201,44 @@ body {
     height: calc(80vw * 1.73);
   }
 }
+
 .link-buttons {
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        margin: 1rem 0;
-      }
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 1rem 0;
+}
 
-      .link {
-        box-sizing: border-box;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex: 1;
-        max-width: 180px;
-        padding: 10px 14px;
-        font-size: 1rem;
-        font-family: 'Germania One', sans-serif;
-        border-radius: 10px;
-        border: 2px solid #fff;
-        background-color: #000;
-        color: #fff;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background-color 0.3s ease, transform 0.1s ease;
-      }
+.link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  max-width: 180px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: 'Germania One', sans-serif;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
 
-      .link:hover {
-        background-color: #18181b;
-      }
+.link:hover {
+  background-color: #18181b;
+}
 
-      .link:active {
-        transform: scale(0.98);
-      }
+.link:active {
+  transform: scale(0.98);
+}
 
-      .section-divider {
-        width: 100%;
-        border: 0;
-        border-top: 1px solid #52525b;
-        margin: 1.5rem 0 2rem;
-      }
+.section-divider {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #52525b;
+  margin: 1.5rem 0 2rem;
+}
