@@ -244,35 +244,27 @@ button#generateButton:disabled {
 }
 
 .description-panel {
-  position: relative;
-  z-index: 1;
-  max-height: 0;
-  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(24, 24, 27, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 8px;
   opacity: 0;
-  margin-top: -2px;
-  padding: 0 16px;
-  border: 2px solid transparent;
-  border-top: 0;
-  border-radius: 0 0 8px 8px;
-  transform: translateY(-12px);
-  transform-origin: top;
-  transition: max-height 240ms ease, opacity 180ms ease, padding 180ms ease, border-color 180ms ease, transform 240ms ease;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  overflow-y: auto;
 }
 
 .description-panel.active {
-  max-height: 420px;
   opacity: 1;
-  padding: 12px 16px;
-  background-color: #2563eb;
-  border-color: #2563eb;
-  color: #fff;
-  text-align: left;
-  transform: translateY(0);
-}
-
-.reel-wrapper:has(.description-panel.active) .reel-outer {
-  border-bottom-color: #2563eb;
-  border-radius: 10px 10px 0 0;
+  pointer-events: auto;
 }
 
 .description-panel strong {
