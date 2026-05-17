@@ -224,8 +224,8 @@ button#generateButton:disabled {
   }
 }
 
-#race,
-#alignment {
+#inner-race,
+#inner-alignment {
   font-size: 1.5rem;
   line-height: 1.6;
   text-align: center;
