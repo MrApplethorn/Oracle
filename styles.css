@@ -130,7 +130,8 @@ button#generateButton:disabled {
 
 .reel-wrapper > .reels {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   margin: 2rem 0;
 }
 
