@@ -215,20 +215,6 @@ button#generateButton:disabled {
   text-transform: uppercase;
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 8px rgba(228, 7, 18, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 16px rgba(228, 7, 18, 0.8);
-  }
-}
-
-#inner-race,
-#inner-alignment {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
 /* ===== WIDOWMAKER: INFO BUTTON & DESCRIPTION PANEL ===== */
 .info-btn {
   display: inline-flex;
