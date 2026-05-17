@@ -229,8 +229,7 @@ button#generateButton:disabled {
   font-size: 1.5rem;
   line-height: 1.6;
   text-align: center;
-  color: #fff;
-  animation: pulse-text 2s ease-in-out infinite;
+  animation: pulse-color 2s ease-in-out infinite;
 }
 
 /* ===== WIDOWMAKER: INFO BUTTON & DESCRIPTION PANEL ===== */
