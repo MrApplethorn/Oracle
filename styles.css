@@ -217,10 +217,10 @@ button#generateButton:disabled {
 
 @keyframes pulse-text {
   0%, 100% {
-    opacity: 1;
+    color: #fff;
   }
   50% {
-    opacity: 0.5;
+    color: #e40712;
   }
 }
 
