@@ -213,6 +213,17 @@ button#generateButton:disabled {
   width: 100%;
 }
 
+.reel-wrapper-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reel-wrapper-item .reel-label {
+  text-align: center;
+  margin: 0;
+}
+
 .reel-label {
   font-size: 0.9rem;
   letter-spacing: 1px;
