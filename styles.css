@@ -152,9 +152,12 @@ button#generateButton:disabled {
 }
 
 .reel-outer.wide {
+  margin-top: 0;
+}
+
+.reel-wrapper-item.wide {
   grid-column: 1 / -1;
   width: 100%;
-  margin-top: 0;
 }
 
 .reel-outer::before,
