@@ -144,6 +144,7 @@ button#generateButton:disabled {
   position: relative;
   z-index: 2;
   cursor: pointer;
+  transition: height 0.3s ease;
 }
 
 .reel-outer.wide {
@@ -171,6 +172,11 @@ button#generateButton:disabled {
 .reel-outer::after {
   bottom: 0;
   background: linear-gradient(to top, #18181b, transparent);
+}
+
+.reel-outer.expanded {
+  height: auto;
+  min-height: 200px;
 }
 
 .reel-inner {
