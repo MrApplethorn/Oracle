@@ -1,4 +1,3 @@
-/* ===== GLOBAL STYLES ===== */
 body {
   font-family: 'Germania One', sans-serif;
   background-color: #27272a;
@@ -42,7 +41,6 @@ h1 {
   margin: 1.5rem 0 2rem;
 }
 
-/* ===== BUTTONS & LINKS ===== */
 button {
   font-family: 'Germania One', sans-serif;
 }
@@ -110,209 +108,6 @@ button#generateButton:disabled {
   transform: scale(0.98);
 }
 
-/* ===== WIDOWMAKER & TOWNCRIER: REEL STYLES ===== */
-.reels {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  justify-content: center;
-  margin: 2rem 0;
-  width: 100%;
-}
-
-.reels:first-of-type {
-  margin-bottom: 2rem;
-}
-
-.reels:last-of-type {
-  margin-top: 2rem;
-}
-
-.reel-wrapper > .reels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin: 2rem 0;
-}
-
-.reel-outer {
-  background: #18181b;
-  border: 2px solid #52525b;
-  border-radius: 10px;
-  height: 80px;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
-  transition: height 0.3s ease;
-}
-
-.reel-outer.expanded {
-  height: auto;
-}
-
-.reel-outer.wide {
-  margin-top: 0;
-}
-
-.reel-wrapper-item.wide {
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
-.reel-outer::before,
-.reel-outer::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 22px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.reel-outer::before {
-  top: 0;
-  background: linear-gradient(to bottom, #18181b, transparent);
-}
-
-.reel-outer::after {
-  bottom: 0;
-  background: linear-gradient(to top, #18181b, transparent);
-}
-
-.reel-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.reel-item {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 4px;
-  font-size: 1.2rem;
-  color: #fff;
-  padding: 0 8px;
-  text-align: center;
-  line-height: 1.2;
-  flex-shrink: 0;
-}
-
-.separator {
-  color: #a1a1aa;
-}
-
-.reel-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-
-.reel-wrapper-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.reel-wrapper-item .reel-label {
-  text-align: center;
-  margin: 0;
-}
-
-.reel-label {
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  color: #a1a1aa;
-  text-transform: uppercase;
-}
-
-/* ===== WIDOWMAKER: INFO BUTTON & DESCRIPTION PANEL ===== */
-.info-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  font-size: 0.75rem;
-  font-family: 'Germania One', sans-serif;
-  border-radius: 50%;
-  border: none;
-  background-color: #2563eb;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  flex-shrink: 0;
-  vertical-align: middle;
-}
-
-.info-btn:hover {
-  background-color: #1d4ed8;
-  transform: scale(1.1);
-}
-
-.info-btn:active {
-  transform: scale(0.95);
-}
-
-.overlay-panel {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: 0;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 500px;
-  bottom: auto;
-  background-color: rgba(24, 24, 27, 0.95);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 10;
-  overflow-y: auto;
-  min-height: auto;
-  max-height: 80vh;
-  padding: 1.5rem;
-}
-
-.overlay-panel.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.overlay-panel strong {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 1.2rem;
-}
-
-.overlay-panel p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.overlay-panel hr {
-  border: 0;
-  border-top: 1px solid #fff;
-  opacity: 0.25;
-  margin: 10px 0;
-}
-
-/* ===== ORACLE: CARD STYLES ===== */
 #resultContainer {
   margin-top: 30px;
   display: grid;
@@ -497,7 +292,6 @@ button#generateButton:disabled {
   animation: pulse-border 1.5s ease-out infinite;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
 @media (min-width: 600px) {
   h1 {
     font-size: 2.5rem;
