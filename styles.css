@@ -252,6 +252,7 @@ button#generateButton:disabled {
   bottom: 0;
   background-color: rgba(24, 24, 27, 0.95);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1rem;
@@ -260,6 +261,7 @@ button#generateButton:disabled {
   pointer-events: none;
   transition: opacity 0.3s ease;
   z-index: 10;
+  overflow-y: auto;
 }
 
 .overlay-panel.active {
