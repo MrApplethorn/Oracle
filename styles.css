@@ -251,9 +251,12 @@ button#generateButton:disabled {
 
 .overlay-panel {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   right: 0;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
   bottom: auto;
   background-color: rgba(24, 24, 27, 0.95);
   display: flex;
@@ -267,7 +270,8 @@ button#generateButton:disabled {
   transition: opacity 0.3s ease;
   z-index: 10;
   overflow-y: auto;
-  min-height: 80px;
+  min-height: 200px;  /* Increase from 80px */
+  max-height: 80vh;   /* Add max height constraint */
 }
 
 .overlay-panel.active {
